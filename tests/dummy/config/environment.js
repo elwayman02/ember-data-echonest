@@ -16,7 +16,9 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
-    }
+    },
+
+    ECHONEST_KEY: process.env.ECHONEST_KEY
   };
 
   if (environment === 'development') {

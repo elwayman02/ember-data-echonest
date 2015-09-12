@@ -1,0 +1,23 @@
+body {
+  padding: 0 10px;
+}
+
+.header,
+.title {
+  text-align: center;
+}
+
+.header {
+  margin-bottom: 5px;
+}
+
+.header button {
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.index {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
