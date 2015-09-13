@@ -3,12 +3,12 @@
         <th>Genre</th>
         <th>Urls</th>
     </tr>
-  {{#each model as |genre|}}
-      <tr>
-          <td>{{genre.name}}</td>
-          <td><ul>{{#each-in genre.urls as |type url|}}
-            <li>{{url}}</li>
-          {{/each-in}}</ul></td>
-      </tr>
-  {{/each}}
+    {{#each model as |genre|}}
+        <tr>
+            <td>{{genre.name}}</td>
+            <td><ul>{{#each-in genre.urls as |type url|}}
+                <li>{{url}}</li>
+            {{/each-in}}</ul></td>
+        </tr>
+    {{/each}}
 </table>
