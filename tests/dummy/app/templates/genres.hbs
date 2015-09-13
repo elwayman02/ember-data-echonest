@@ -1,12 +1,7 @@
-<h2 class="title">Genres</h2>
+<div class="header">
+    <h3>Genres</h3>
 
-<table>
-    <tr>
-        <th>Genre</th>
-    </tr>
-    {{#each model as |genre|}}
-      <tr>
-          <td>{{genre.name}}</td>
-      </tr>
-    {{/each}}
-</table>
+  {{#link-to 'genres.list'}}<button>List</button>{{/link-to}}
+</div>
+
+{{outlet}}
