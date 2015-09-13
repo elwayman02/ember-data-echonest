@@ -26,7 +26,7 @@ module.exports = function(environment) {
       'img-src': "'self'",
       'style-src': "'self'",
       'media-src': "'self'"
-    }
+    },
 
     ECHONEST_KEY: process.env.ECHONEST_KEY
   };
