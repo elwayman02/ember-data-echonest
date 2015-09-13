@@ -7,7 +7,9 @@ var Router = Ember.Router.extend({
 
 Router.map(function() {
   this.route('index', { path: '/' });
-  this.route('genres');
+  this.route('genres', function () {
+    this.route('list');
+  });
 });
 
 export default Router;

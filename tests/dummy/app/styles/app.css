@@ -21,3 +21,28 @@ body {
   display: flex;
   flex-direction: column;
 }
+
+table {
+  border-collapse: collapse;
+}
+
+table, th, td {
+  border: 1px solid darkgray;
+}
+
+th {
+  padding: 5px 0;
+}
+
+td {
+  padding: 5px;
+}
+
+td ul {
+  margin: 0;
+  padding: 0;
+}
+
+td ul li {
+  list-style-type: none;
+}

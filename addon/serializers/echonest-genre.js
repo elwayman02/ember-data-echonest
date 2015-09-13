@@ -11,6 +11,7 @@ export default DS.RESTSerializer.extend({
         genre.id = index;
         return genre;
       });
+
       return this._super(store, primaryModelClass, { 'echonest-genre': genres }, id, requestType);
     }
 
