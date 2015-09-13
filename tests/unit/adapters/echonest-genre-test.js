@@ -7,6 +7,10 @@ moduleFor('adapter:echonest-genre', 'Unit | Adapter | echonest genre', {
 
 // Replace this with your real tests.
 test('it exists', function(assert) {
-  var adapter = this.subject();
+  var adapter = this.subject({
+    ENV: {
+      ECHONEST_KEY: 'ABCD1234'
+    }
+  });
   assert.ok(adapter);
 });

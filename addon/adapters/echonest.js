@@ -1,3 +1,4 @@
+import Ember from 'ember';
 import DS from 'ember-data';
 
 export default DS.RESTAdapter.extend({
@@ -8,7 +9,11 @@ export default DS.RESTAdapter.extend({
 
   initApiKey: Ember.on('init', function () {
     const ENV = this.container.lookupFactory('config:environment');
-    this.set('apiKey', ENV.ECHONEST_KEY);
+    if (Ember.isPresent(ENV) && Ember.isPresent(ENV.ECHONEST_KEY)) {
+      this.set('apiKey', ENV.ECHONEST_KEY);
+    } else {
+      Ember.Logger.warn('Echonest Key was not found in your environment config!');
+    }
   }),
 
   ajaxOptions() {
@@ -19,7 +24,8 @@ export default DS.RESTAdapter.extend({
     const hash = this._super.apply(this, arguments);
     hash.data = hash.data || {};
     hash.data.api_key = apiKey;
-    hash.data.format = dataType
+    hash.data.format = dataType;
+    hash.data.bucket = 'urls'; // TODO: Remove this when buckets are implemented properly (Note: May break other apis)
     hash.dataType = dataType;
     return hash;
   }
