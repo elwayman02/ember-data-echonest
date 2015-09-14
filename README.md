@@ -38,7 +38,11 @@ The addon exposes a number of models, adapters, and serializers you can use to a
 review our [issue list](https://github.com/elwayman02/ember-data-echonest/issues) and create a new one if it has
 not yet been requested. Contributions especially welcome, as well!
 
-Each section below details the usage of a particular type of API provided by Echo Nest.
+Each section below details the usage of a particular type of API provided by Echo Nest. Many of the APIs have additional
+query params called `bucket` that allow you to specify additional information to be returned in the response. In order
+to use these buckets, you would pass a query param `bucket` to Ember-Data with an array of strings containing the names
+ of each bucket to be included. In cases where you are modifying a `findAll` query, you will need to switch to `query`
+ to be able to pass the extra parameters for the request.
 
 ### Artist
 
@@ -56,6 +60,12 @@ Unsupported: `artists`, `profile`, `search`, `similar`
 Returns a list of all available genres
 
 `this.store.findAll('echonest-genre');`
+
+Buckets:
+`urls` - Include urls tied to the genre (generally wikipedia)
+`description` - Include a text description of the genre
+
+`this.store.query('echonest-genre', { bucket: ['urls', 'description'] });`
 
 ### Song
 

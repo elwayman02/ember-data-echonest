@@ -2,6 +2,7 @@
     <tr>
         <th>Genre</th>
         <th>Urls</th>
+        <th>Description</th>
     </tr>
     {{#each model as |genre|}}
         <tr>
@@ -9,6 +10,7 @@
             <td><ul>{{#each-in genre.urls as |type url|}}
                 <li>{{url}}</li>
             {{/each-in}}</ul></td>
+            <td>{{genre.description}}</td>
         </tr>
     {{/each}}
 </table>

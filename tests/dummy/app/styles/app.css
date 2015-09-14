@@ -1,48 +1,48 @@
 body {
-  padding: 0 10px;
+    padding: 0 10px;
 }
 
 .header,
 .title {
-  text-align: center;
+    text-align: center;
 }
 
 .header {
-  margin-bottom: 5px;
+    margin-bottom: 5px;
 }
 
 .header button {
-  border-radius: 5px;
-  padding: 10px;
+    border-radius: 5px;
+    padding: 10px;
 }
 
 .index {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
 }
 
 table {
-  border-collapse: collapse;
+    border-collapse: collapse;
 }
 
 table, th, td {
-  border: 1px solid darkgray;
+    border: 1px solid darkgray;
 }
 
 th {
-  padding: 5px 0;
+    padding: 5px 0;
 }
 
 td {
-  padding: 5px;
+    padding: 5px;
 }
 
 td ul {
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
 }
 
 td ul li {
-  list-style-type: none;
+    list-style-type: none;
 }

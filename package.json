@@ -1,7 +1,7 @@
 {
   "name": "ember-data-echonest",
   "version": "0.0.1-beta.1",
-  "description": "Ember-Data abstraction for the Echonest API",
+  "description": "Ember-Data abstraction for the Echo Nest API",
   "directories": {
     "doc": "doc",
     "test": "tests"
