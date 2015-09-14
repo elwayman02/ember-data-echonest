@@ -1,3 +1,4 @@
+/* General Styles */
 body {
     padding: 0 10px;
 }
@@ -11,9 +12,9 @@ body {
     margin-bottom: 5px;
 }
 
-.header button {
+button {
     border-radius: 5px;
-    padding: 10px;
+    padding: 5px;
 }
 
 .flex-container {
@@ -22,6 +23,15 @@ body {
     flex-direction: column;
 }
 
+/* Form Styles */
+input {
+    border-radius: 5px;
+    margin: 5px;
+    min-width: 150px;
+    padding: 5px;
+}
+
+/* Table Styles */
 table {
     border-collapse: collapse;
 }
@@ -45,4 +55,11 @@ td ul {
 
 td ul li {
     list-style-type: none;
+}
+
+/* Search Styles */
+.searchContainer {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
 }
