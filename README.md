@@ -150,7 +150,46 @@ Note: The docs indicate 0/15/30 as the only accepted indices, but again, any val
 this.store.query('echonest-genre', {
     name: 'rock',
     method: 'search',
-    start: 15
+    start: 25
+});
+```
+
+#### Similar
+
+Returns a list of genres similar to the provided genre `name`. An exact genre name must be provided to receive results.
+
+```javascript
+this.store.query('echonest-genre', {
+    name: 'hard rock',
+    method: 'similar'
+});
+```
+
+##### Optional
+
+*Results*: Number of desired results _(0+, Default: 15)_
+
+```javascript
+this.store.query('echonest-genre', {
+    name: 'hard rock',
+    method: 'similar',
+    results: 75
+});
+```
+
+Note: The [Similar API Docs](http://developer.echonest.com/docs/v4/genre.html#similar) indicate the default value for
+`results` is _100_, but my testing indicates the actual default is _15_. Additionally, they document a max value of 100, 
+but any value is respected.
+
+*Start*: Desired index of the first result returned _(0+, Default: 0)_
+
+Note: The docs indicate 0/15/30 as the only accepted indices, but again, any value seems to be allowed.
+
+```javascript
+this.store.query('echonest-genre', {
+    name: 'hard rock',
+    method: 'similar',
+    start: 10
 });
 ```
 
