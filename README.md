@@ -67,8 +67,7 @@ _Currently Unsupported_
 
 [Genre Docs](http://developer.echonest.com/docs/v4/genre.html)
 
-Supported: `list`, `profile`, `search`
-Unsupported: `similar`
+Supported: `list`, `profile`, `search`, `similar`
 
 ##### Buckets
 
