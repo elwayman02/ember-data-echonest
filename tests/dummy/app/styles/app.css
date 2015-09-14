@@ -16,7 +16,7 @@ body {
     padding: 10px;
 }
 
-.index {
+.flex-container {
     align-items: center;
     display: flex;
     flex-direction: column;
