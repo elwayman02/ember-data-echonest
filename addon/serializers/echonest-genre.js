@@ -1,10 +1,6 @@
 import DS from 'ember-data';
 
 export default DS.RESTSerializer.extend({
-    modelNameFromPayloadKey(payloadKey) {
-        return this._super(payloadKey);
-    },
-
     normalizeResponse(store, primaryModelClass, payload, id, requestType) {
         if (payload.response && payload.response.genres) {
             const genres = payload.response.genres.map(function (genre, index) {
