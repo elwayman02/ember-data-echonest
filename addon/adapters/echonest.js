@@ -26,7 +26,7 @@ export default DS.RESTAdapter.extend({
         return url;
     },
 
-    ajaxOptions(url, type, options) {
+    ajaxOptions() {
         const apiKey = this.get('apiKey');
         Ember.assert('An Echonest API Key must be provided', apiKey);
         const dataType = this.get('dataType');
