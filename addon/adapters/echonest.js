@@ -16,6 +16,16 @@ export default DS.RESTAdapter.extend({
         }
     }),
 
+    buildURL(modelName, id, snapshot, requestType, query) {
+        let url = this._super.apply(this, arguments);
+        if (Ember.isPresent(query) && Ember.isPresent(query.method)) {
+            const method = query.method;
+            delete query.method;
+            return `${url}/${method}`;
+        }
+        return url;
+    },
+
     ajaxOptions() {
         const apiKey = this.get('apiKey');
         Ember.assert('An Echonest API Key must be provided', apiKey);

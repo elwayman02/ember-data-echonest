@@ -9,6 +9,7 @@ Router.map(function () {
     this.route('index', { path: '/' });
     this.route('genres', function () {
         this.route('list');
+        this.route('profile');
     });
 });
 

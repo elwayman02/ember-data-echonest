@@ -38,11 +38,26 @@ The addon exposes a number of models, adapters, and serializers you can use to a
 review our [issue list](https://github.com/elwayman02/ember-data-echonest/issues) and create a new one if it has
 not yet been requested. Contributions especially welcome, as well!
 
-Each section below details the usage of a particular type of API provided by Echo Nest. Many of the APIs have additional
-query params called `bucket` that allow you to specify additional information to be returned in the response. In order
-to use these buckets, you would pass a query param `bucket` to Ember-Data with an array of strings containing the names
- of each bucket to be included. In cases where you are modifying a `findAll` query, you will need to switch to `query`
- to be able to pass the extra parameters for the request.
+#### Methods
+
+Each section below details the usage of a particular type of data provided by Echo Nest. Within these sections are 
+specific methods used for retrieving that model type. In order to utilize these APIs, you must pass the name
+of the method you wish to use for your request:
+
+```javascript
+this.store.query('echonest-genre', {
+  method: 'list'
+});
+```
+
+This parameter must be passed in order for Ember-Data-Echonest to know how to construct the proper request url.
+
+#### Buckets
+
+Many of the APIs have additional query params called buckets that allow you to specify additional information to be 
+returned in the response. In order to use these buckets, you would pass a query param `bucket` to Ember-Data with 
+an array of strings containing the names of each bucket to be included. Every model type has the same buckets available,
+unless otherwise noted.
 
 ### Artist
 
@@ -52,20 +67,41 @@ _Currently Unsupported_
 
 [Genre Docs](http://developer.echonest.com/docs/v4/genre.html)
 
-Supported: `list`
-Unsupported: `artists`, `profile`, `search`, `similar`
+Supported: `list`, `profile`
+Unsupported: `search`, `similar`
+
+##### Buckets
+
+`urls` - Include urls tied to the genre (generally wikipedia)
+`description` - Include a text description of the genre
+
+```javascript
+this.store.query('echonest-genre', {
+    method: 'something',
+    bucket: ['urls', 'description'] 
+});
+```
 
 #### List
 
 Returns a list of all available genres
 
-`this.store.findAll('echonest-genre');`
+```javascript
+this.store.query('echonest-genre', {
+    method: 'list'
+});
+```
 
-Buckets:
-`urls` - Include urls tied to the genre (generally wikipedia)
-`description` - Include a text description of the genre
+#### Profile
 
-`this.store.query('echonest-genre', { bucket: ['urls', 'description'] });`
+Returns the profile of a single genre (as an array w/ a single item)
+
+```javascript
+this.store.query('echonest-genre', {
+    method: 'profile',
+    name: 'rock'
+});
+```
 
 ### Song
 
