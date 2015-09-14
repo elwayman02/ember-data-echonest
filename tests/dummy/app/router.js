@@ -11,6 +11,7 @@ Router.map(function () {
         this.route('list');
         this.route('profile');
         this.route('search');
+        this.route('similar');
     });
 });
 
