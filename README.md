@@ -67,8 +67,8 @@ _Currently Unsupported_
 
 [Genre Docs](http://developer.echonest.com/docs/v4/genre.html)
 
-Supported: `list`, `profile`
-Unsupported: `search`, `similar`
+Supported: `list`, `profile`, `search`
+Unsupported: `similar`
 
 ##### Buckets
 
@@ -92,14 +92,65 @@ this.store.query('echonest-genre', {
 });
 ```
 
+##### Optional
+
+*Results*: Number of desired results _(0+, Default: 1000)_
+
+```javascript
+this.store.query('echonest-genre', {
+    name: 'rock',
+    method: 'search',
+    results: 75
+});
+```
+
 #### Profile
 
-Returns the profile of a single genre (as an array w/ a single item)
+Returns the profile of a single genre (as a list w/ a single item)
 
 ```javascript
 this.store.query('echonest-genre', {
     method: 'profile',
     name: 'rock'
+});
+```
+
+#### Search
+
+Returns a list of genres matching the provided `name` substring
+
+```javascript
+this.store.query('echonest-genre', {
+    name: 'rock',
+    method: 'search'
+});
+```
+
+##### Optional
+
+*Results*: Number of desired results _(0+, Default: 15)_
+
+```javascript
+this.store.query('echonest-genre', {
+    name: 'rock',
+    method: 'search',
+    results: 75
+});
+```
+
+Note: The [Search API Docs](http://developer.echonest.com/docs/v4/genre.html#search) indicate the default value for
+`results` is _100_, but my testing indicates the actual default is _15_. Additionally, they document a max value of 100, 
+but any value is respected.
+
+*Start*: Desired index of the first result returned _(0+, Default: 0)_
+
+Note: The docs indicate 0/15/30 as the only accepted indices, but again, any value seems to be allowed.
+
+```javascript
+this.store.query('echonest-genre', {
+    name: 'rock',
+    method: 'search',
+    start: 15
 });
 ```
 

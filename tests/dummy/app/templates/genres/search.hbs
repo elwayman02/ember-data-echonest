@@ -1,0 +1,26 @@
+<div class="searchContainer">
+    {{input
+        enter='search'
+        placeholder='Search for a Genre...'
+        value=name}}
+    <button {{action 'search'}}>Search</button>
+</div>
+
+{{#if genres.length}}
+    <table>
+        <tr>
+            <th>Genre</th>
+            <th>Urls</th>
+            <th>Description</th>
+        </tr>
+        {{#each genres as |genre|}}
+            <tr>
+                <td>{{genre.name}}</td>
+                <td><ul>{{#each-in genre.urls as |type url|}}
+                    <li>{{url}}</li>
+                {{/each-in}}</ul></td>
+                <td>{{genre.description}}</td>
+            </tr>
+        {{/each}}
+    </table>
+{{/if}}
