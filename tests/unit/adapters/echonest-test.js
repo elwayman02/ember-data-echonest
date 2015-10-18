@@ -19,7 +19,13 @@ moduleFor('adapter:echonest', 'Unit | Adapter | echonest', {
     }
 });
 
-test('sets apiKey on init', function(assert) {
+test('defaults', function (assert) {
+    assert.equal(adapter.get('host'), 'http://developer.echonest.com', 'host is set by default');
+    assert.equal(adapter.get('namespace'), 'api/v4', 'namespace is set by default');
+    assert.equal(adapter.get('dataType'), 'jsonp', 'dataType is jsonp by default');
+});
+
+test('sets apiKey on init', function (assert) {
     assert.equal(adapter.get('apiKey'), ECHONEST_KEY, 'Env config used for apiKey');
 });
 
@@ -76,4 +82,56 @@ test('buildURL does nothing if no method is passed', function (assert) {
     assert.ok(presentSpy.calledTwice, 'isPresent was called twice');
     assert.ok(!presentSpy.secondCall.returnValue, 'isPresent returned false for method presence');
     assert.equal(result.indexOf(method), -1, 'no method was added to url');
+});
+
+let url, type, data, options;
+
+function setupOptionsTests(noData) {
+    url = 'http://foo.com/bar';
+    type = 'GET';
+    data = { foo: 'bar' };
+    if (noData) {
+        options = {};
+    } else {
+        options = { data };
+    }
+
+    return adapter.ajaxOptions(url, type, options);
+}
+
+test('ajaxOptions asserts API key existence', function (assert) {
+    const spy = this.spy(Ember, 'assert');
+
+    setupOptionsTests.call(this);
+
+    assert.ok(spy.calledOnce, 'assert was called once');
+    const { args } = spy.firstCall;
+    assert.equal(Ember.typeOf(args[0]), 'string', 'Error message passed to assert');
+    assert.equal(args[1], ECHONEST_KEY, 'apiKey passed to assert');
+});
+
+test('ajaxOptions builds data hash for request', function (assert) {
+    const result = setupOptionsTests.call(this);
+
+    assert.ok(Ember.isPresent(result.data), 'data hash exists');
+    assert.equal(result.data.foo, data.foo, 'existing data is preserved');
+    assert.equal(result.data.api_key, ECHONEST_KEY, 'apiKey is set in data');
+    assert.equal(result.data.format, adapter.get('dataType'), 'dataType is set in data');
+});
+
+test('ajaxOptions creates new data hash if one does not exist', function (assert) {
+    const result = setupOptionsTests.call(this, true);
+
+    assert.ok(Ember.isPresent(result.data), 'data hash exists');
+    const keys = Object.keys(result.data);
+    assert.equal(keys.length, 2, '2 keys in data hash');
+    assert.equal(result.data.api_key, ECHONEST_KEY, 'apiKey is set in data');
+    assert.equal(result.data.format, adapter.get('dataType'), 'dataType is set in data');
+});
+
+test('ajaxOptions sets hash params', function (assert) {
+    const result = setupOptionsTests.call(this);
+
+    assert.equal(result.dataType, adapter.get('dataType'), 'dataType is set in hash');
+    assert.ok(result.traditional, 'traditional is set to true');
 });
