@@ -104,8 +104,14 @@ test('ajaxOptions asserts API key existence', function (assert) {
 
     setupOptionsTests.call(this);
 
-    assert.ok(spy.calledOnce, 'assert was called once');
-    const { args } = spy.firstCall;
+    let args;
+    if (spy.calledOnce) {
+        assert.ok(spy.calledOnce, 'assert was called once');
+        args = spy.firstCall.args;
+    } else { // TODO: Remove these checks and just use the above once Ember v2.2.0 lands
+        assert.equal(spy.callCount, 13, 'assert was called 13 times');
+        args = spy.getCall(4).args;
+    }
     assert.equal(Ember.typeOf(args[0]), 'string', 'Error message passed to assert');
     assert.equal(args[1], ECHONEST_KEY, 'apiKey passed to assert');
 });
