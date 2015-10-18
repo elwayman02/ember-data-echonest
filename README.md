@@ -214,7 +214,8 @@ _Currently Unsupported_
 
 ### Installation
 
-* `git clone` this repository
+* `git clone git@github.com:elwayman02/ember-data-echonest.git`
+* `cd ember-data-echonest`
 * `npm install`
 * `bower install`
 

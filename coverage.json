@@ -1,18 +1,18 @@
 {
   "stats": {
     "suites": 28,
-    "tests": 28,
-    "passes": 28,
+    "tests": 32,
+    "passes": 32,
     "pending": 0,
     "failures": 0,
-    "start": "2015-10-18T06:51:48.111Z",
-    "end": "2015-10-18T06:51:48.360Z"
+    "start": "2015-10-18T08:50:59.146Z",
+    "end": "2015-10-18T08:50:59.553Z"
   },
   "coverage": {
     "total": {
       "statementsTotal": 40,
-      "statementsCovered": 17,
-      "percentage": 42.5
+      "statementsCovered": 23,
+      "percentage": 57.5
     },
     "files": [
       {
@@ -24,8 +24,8 @@
       {
         "name": "ember-data-echonest/adapters/echonest",
         "statementsTotal": 23,
-        "statementsCovered": 7,
-        "percentage": 30.43
+        "statementsCovered": 13,
+        "percentage": 56.52
       },
       {
         "name": "ember-data-echonest/models/echonest-genre",
