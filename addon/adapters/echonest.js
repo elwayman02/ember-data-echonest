@@ -1,24 +1,27 @@
 import Ember from 'ember';
 import DS from 'ember-data';
 
-export default DS.RESTAdapter.extend({
+const { Logger, assert, isPresent, on } = Ember;
+const { RESTAdapter } = DS;
+
+export default RESTAdapter.extend({
     host: 'http://developer.echonest.com',
     namespace: 'api/v4',
     apiKey: null,
     dataType: 'jsonp',
 
-    initApiKey: Ember.on('init', function () {
+    initApiKey: on('init', function () {
         const ENV = this.container.lookupFactory('config:environment');
-        if (Ember.isPresent(ENV) && Ember.isPresent(ENV.ECHONEST_KEY)) {
+        if (isPresent(ENV) && isPresent(ENV.ECHONEST_KEY)) {
             this.set('apiKey', ENV.ECHONEST_KEY);
         } else {
-            Ember.Logger.warn('Echonest Key was not found in your environment config!');
+            Logger.warn('Echonest Key was not found in your environment config!');
         }
     }),
 
     buildURL(modelName, id, snapshot, requestType, query) {
         let url = this._super.apply(this, arguments);
-        if (Ember.isPresent(query) && Ember.isPresent(query.method)) {
+        if (isPresent(query) && isPresent(query.method)) {
             const method = query.method;
             delete query.method;
             return `${url}/${method}`;
@@ -28,7 +31,7 @@ export default DS.RESTAdapter.extend({
 
     ajaxOptions() {
         const apiKey = this.get('apiKey');
-        Ember.assert('An Echonest API Key must be provided', apiKey);
+        assert('An Echonest API Key must be provided', apiKey);
         const dataType = this.get('dataType');
 
         const hash = this._super.apply(this, arguments);

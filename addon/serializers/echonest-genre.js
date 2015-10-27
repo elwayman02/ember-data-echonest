@@ -1,9 +1,12 @@
 import Ember from 'ember';
 import DS from 'ember-data';
 
-export default DS.RESTSerializer.extend({
+const { isPresent } = Ember;
+const { RESTSerializer } = DS;
+
+export default RESTSerializer.extend({
     normalizeResponse(store, primaryModelClass, payload, id, requestType) {
-        if (Ember.isPresent(payload.response) && Ember.isPresent(payload.response.genres)) {
+        if (isPresent(payload.response) && isPresent(payload.response.genres)) {
             const genres = payload.response.genres.map(function (genre, index) {
                 genre.id = index;
                 return genre;

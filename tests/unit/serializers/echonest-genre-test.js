@@ -10,7 +10,7 @@ moduleFor('serializer:echonest-genre', 'Unit | Serializer | echonest genre', {
   }
 });
 
-let store, modelClass, payload, response, genres, id, type, foo, normalizeStub, presentSpy;
+let store, modelClass, payload, response, genres, id, type, foo, normalizeStub;
 
 function setupNormalizeTests(showResp, showGenres) {
     store = {};
@@ -34,7 +34,6 @@ function setupNormalizeTests(showResp, showGenres) {
         payload.response = response;
     }
 
-    presentSpy = this.spy(Ember, 'isPresent');
     normalizeStub = this.stub(serializer, '_normalizeResponse', function () {
         return foo;
     });
@@ -53,9 +52,6 @@ function assertNormalizeArguments(assert, args) {
 test('normalizeResponse does nothing if no response', function (assert) {
     const result = setupNormalizeTests.call(this);
 
-    assert.ok(presentSpy.calledOnce, 'isPresent was called once');
-    assert.equal(presentSpy.firstCall.args[0], undefined, 'response did not exist');
-
     assert.ok(normalizeStub.calledOnce, '_normalizeResponse was called once');
 
     const { args } = normalizeStub.firstCall;
@@ -67,10 +63,6 @@ test('normalizeResponse does nothing if no response', function (assert) {
 test('normalizeResponse does nothing if no genres', function (assert) {
     const result = setupNormalizeTests.call(this, true);
 
-    assert.ok(presentSpy.calledTwice, 'isPresent was called twice');
-    assert.equal(presentSpy.firstCall.args[0], response, 'response was passed to isPresent');
-    assert.equal(presentSpy.secondCall.args[0], undefined, 'genres did not exist');
-
     assert.ok(normalizeStub.calledOnce, '_normalizeResponse was called once');
 
     const { args } = normalizeStub.firstCall;
@@ -80,10 +72,6 @@ test('normalizeResponse does nothing if no genres', function (assert) {
 
 test('normalizeResponse builds genre response', function (assert) {
     const result = setupNormalizeTests.call(this, true, true);
-
-    assert.ok(presentSpy.calledTwice, 'isPresent was called twice');
-    assert.equal(presentSpy.firstCall.args[0], response, 'response was passed to isPresent');
-    assert.equal(presentSpy.secondCall.args[0], genres, 'genres were passed to isPresent');
 
     assert.ok(normalizeStub.calledOnce, '_normalizeResponse was called once');
 
