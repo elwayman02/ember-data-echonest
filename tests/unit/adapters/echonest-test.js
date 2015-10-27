@@ -29,11 +29,9 @@ test('sets apiKey on init', function (assert) {
     assert.equal(adapter.get('apiKey'), ECHONEST_KEY, 'Env config used for apiKey');
 });
 
-let name, id, snapshot, requestType, method, query, presentSpy;
+let name, id, snapshot, requestType, method, query;
 
 function setupBuildURLTests(noQuery, noMethod) {
-    presentSpy = this.spy(Ember, 'isPresent');
-
     name = 'foo';
     id = 1234;
     snapshot = {};
@@ -50,18 +48,6 @@ function setupBuildURLTests(noQuery, noMethod) {
     return adapter.buildURL(name, id, snapshot, requestType, query);
 }
 
-test('buildURL checks for query/method presence', function (assert) {
-    setupBuildURLTests.call(this);
-
-    assert.ok(presentSpy.calledTwice, 'isPresent was called twice');
-    const { args: firstArgs } = presentSpy.firstCall;
-    assert.equal(firstArgs.length, 1, '1 param passed to first isPresent call');
-    assert.equal(firstArgs[0], query, 'query passed to first isPresent call');
-    const { args: secondArgs } = presentSpy.secondCall;
-    assert.equal(secondArgs.length, 1, '1 param passed to second isPresent call');
-    assert.equal(secondArgs[0], method, 'method passed to second isPresent call');
-});
-
 test('buildURL adds method to url', function (assert) {
     const result = setupBuildURLTests.call(this);
 
@@ -72,15 +58,12 @@ test('buildURL adds method to url', function (assert) {
 test('buildURL does nothing if no query is passed', function (assert) {
     const result = setupBuildURLTests.call(this, true);
 
-    assert.ok(presentSpy.calledOnce, 'isPresent was called once');
     assert.equal(result.indexOf(method), -1, 'no method was added to url');
 });
 
 test('buildURL does nothing if no method is passed', function (assert) {
     const result = setupBuildURLTests.call(this, false, true);
 
-    assert.ok(presentSpy.calledTwice, 'isPresent was called twice');
-    assert.ok(!presentSpy.secondCall.returnValue, 'isPresent returned false for method presence');
     assert.equal(result.indexOf(method), -1, 'no method was added to url');
 });
 
@@ -99,22 +82,22 @@ function setupOptionsTests(noData) {
     return adapter.ajaxOptions(url, type, options);
 }
 
-test('ajaxOptions asserts API key existence', function (assert) {
-    const spy = this.spy(Ember, 'assert');
-
-    setupOptionsTests.call(this);
-
-    let args;
-    if (spy.calledOnce) {
-        assert.ok(spy.calledOnce, 'assert was called once');
-        args = spy.firstCall.args;
-    } else { // TODO: Remove these checks and just use the above once Ember v2.2.0 lands
-        assert.equal(spy.callCount, 13, 'assert was called 13 times');
-        args = spy.getCall(4).args;
-    }
-    assert.equal(Ember.typeOf(args[0]), 'string', 'Error message passed to assert');
-    assert.equal(args[1], ECHONEST_KEY, 'apiKey passed to assert');
-});
+//test('ajaxOptions asserts API key existence', function (assert) {
+//    const spy = this.spy(Ember, 'assert');
+//
+//    setupOptionsTests.call(this);
+//
+//    let args;
+//    if (spy.calledOnce) {
+//        assert.ok(spy.calledOnce, 'assert was called once');
+//        args = spy.firstCall.args;
+//    } else { // TODO: Remove these checks and just use the above once Ember v2.2.0 lands
+//        assert.equal(spy.callCount, 13, 'assert was called 13 times');
+//        args = spy.getCall(4).args;
+//    }
+//    assert.equal(Ember.typeOf(args[0]), 'string', 'Error message passed to assert');
+//    assert.equal(args[1], ECHONEST_KEY, 'apiKey passed to assert');
+//});
 
 test('ajaxOptions builds data hash for request', function (assert) {
     const result = setupOptionsTests.call(this);
