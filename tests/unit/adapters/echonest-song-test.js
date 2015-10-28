@@ -1,12 +1,12 @@
 import { moduleFor, test } from 'ember-qunit';
 
-moduleFor('adapter:echonest-song', 'Unit | Adapter | echonest song', {
-  // Specify the other units that are required for this test.
-  // needs: ['serializer:foo']
-});
+moduleFor('adapter:echonest-song', 'Unit | Adapter | echonest song', {});
 
-// Replace this with your real tests.
-test('it exists', function(assert) {
-  var adapter = this.subject();
-  assert.ok(adapter);
+test('pathForType', function (assert) {
+    const adapter = this.subject({
+        ENV: {
+            ECHONEST_KEY: 'ABCD1234'
+        }
+    });
+    assert.equal(adapter.pathForType(), 'song', 'song is returned from pathForType');
 });

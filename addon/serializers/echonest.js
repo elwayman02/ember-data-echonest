@@ -1,18 +1,18 @@
 import Ember from 'ember';
 import DS from 'ember-data';
 
-const { isPresent } = Ember;
+const { String: { pluralize, underscore }, isBlank, isPresent } = Ember;
 const { RESTSerializer } = DS;
 
 export default RESTSerializer.extend({
     modelKey: '',
 
     pluralizeKey(key) {
-        return Ember.String.pluralize(key);
+        return pluralize(key);
     },
 
     keyForAttribute(attr/*, method*/) {
-        return Ember.String.underscore(attr);
+        return underscore(attr);
     },
 
     normalizeResponse(store, primaryModelClass, payload, id, requestType) {
@@ -20,7 +20,9 @@ export default RESTSerializer.extend({
         const pluralKey = this.pluralizeKey(key);
         if (isPresent(key) && isPresent(payload.response) && isPresent(payload.response[pluralKey])) {
             const items = payload.response[pluralKey].map(function (item, index) {
-                item.id = index;
+                if (isBlank(item.id)) {
+                    item.id = index;
+                }
                 return item;
             });
 

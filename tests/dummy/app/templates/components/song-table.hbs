@@ -1,13 +1,21 @@
-{{#if songs.length}}
+{{#if songList.length}}
     <table>
         <tr>
-            <th>Artist</th>
-            <th>Title</th>
+            <th {{action 'updateSortBy' 'title'}}>Title</th>
+            <th {{action 'updateSortBy' 'artistName'}}>Artist</th>
+            <th>Type(s)</th>
+            <th {{action 'updateSortBy' 'songCurrency'}}>Currency</th>
+            <th {{action 'updateSortBy' 'songDiscovery'}}>Discovery</th>
+            <th {{action 'updateSortBy' 'songHotttnesss'}}>Hotttnesss</th>
         </tr>
-        {{#each songs as |song|}}
+        {{#each songList as |song|}}
             <tr>
-                <td>{{song.artistName}}</td>
                 <td>{{song.title}}</td>
+                <td>{{song.artistName}}</td>
+                <td>{{song.types}}</td>
+                <td>{{song.songCurrency}}</td>
+                <td>{{song.songDiscovery}}</td>
+                <td>{{song.songHotttnesss}}</td>
             </tr>
         {{/each}}
     </table>

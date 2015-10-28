@@ -10,6 +10,20 @@ moduleFor('serializer:echonest', 'Unit | Serializer | echonest', {
     }
 });
 
+test('pluralizeKey', function (assert) {
+    const key = 'foo';
+    const result = serializer.pluralizeKey(key);
+
+    assert.equal(result, `${key}s`, 'pluralizes key');
+});
+
+test('keyForAttribute', function (assert) {
+    const attr = 'fooBar';
+    const result = serializer.keyForAttribute(attr);
+
+    assert.equal(result, 'foo_bar', 'converts attribute to underscore');
+});
+
 let store, modelClass, payload, response, key, items, id, type, foo, normalizeStub;
 
 function setupNormalizeTests(showResp, showitems) {
