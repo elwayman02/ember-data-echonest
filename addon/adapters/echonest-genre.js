@@ -1,4 +1,4 @@
-import EchonestAdapter from './echonest';
+import EchonestAdapter from 'ember-data-echonest/adapters/echonest';
 
 export default EchonestAdapter.extend({
     pathForType() {
