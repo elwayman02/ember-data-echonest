@@ -1,0 +1,14 @@
+{{#if songs.length}}
+    <table>
+        <tr>
+            <th>Artist</th>
+            <th>Title</th>
+        </tr>
+        {{#each songs as |song|}}
+            <tr>
+                <td>{{song.artistName}}</td>
+                <td>{{song.title}}</td>
+            </tr>
+        {{/each}}
+    </table>
+{{/if}}

@@ -3,7 +3,7 @@ import DS from 'ember-data';
 const { Model, attr } = DS;
 
 export default Model.extend({
-    artist_id: attr('string'),
-    artist_name: attr('string'),
+    artistId: attr('string'),
+    artistName: attr('string'),
     title: attr('string')
 });

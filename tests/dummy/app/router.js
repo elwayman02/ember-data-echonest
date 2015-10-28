@@ -13,6 +13,9 @@ Router.map(function () {
         this.route('search');
         this.route('similar');
     });
+    this.route('songs', function () {
+        this.route('search', { path: '/' });
+    });
 });
 
 export default Router;

@@ -11,6 +11,10 @@ export default RESTSerializer.extend({
         return Ember.String.pluralize(key);
     },
 
+    keyForAttribute(attr/*, method*/) {
+        return Ember.String.underscore(attr);
+    },
+
     normalizeResponse(store, primaryModelClass, payload, id, requestType) {
         const key = this.get('modelKey');
         const pluralKey = this.pluralizeKey(key);
