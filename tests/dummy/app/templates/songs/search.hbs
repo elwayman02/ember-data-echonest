@@ -2,8 +2,18 @@
     {{input
         enter='search'
         placeholder='Search for a Song...'
-        value=title}}
+        value=keyword}}
     <button {{action 'search'}}>Search</button>
+</div>
+<div class="typeSearch">
+    <span>Search By:</span>
+    {{#ember-power-select
+    onchange=(action (mut searchKey))
+    options=searchTypes
+    selected=searchKey
+    as |type|}}
+        {{type.label}}
+    {{/ember-power-select}}
 </div>
 
 {{song-table songs=songs}}
