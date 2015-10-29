@@ -233,6 +233,35 @@ this.store.query('echonest-song', {
 });
 ```
 
+#### Profile
+
+Returns a list of songs matching the provided song ID(s)
+
+```javascript
+this.store.query('echonest-song', {
+    method: 'profile',
+    id: 'SOYOUXP14DAE470D22'
+});
+```
+
+Multiple IDs:
+
+```javascript
+this.store.query('echonest-song', {
+    method: 'profile',
+    id: ['SOYOUXP14DAE470D22', 'SOORVLT13ADC025EF9']
+});
+```
+
+Alternatively, one or more `track_id` can be provided instead of the song `id`:
+
+```javascript
+this.store.query('echonest-song', {
+    method: 'profile',
+    id: 'TRTLKZV12E5AC92E11'
+});
+```
+
 #### Search
 
 Returns a list of songs matching the provided query parameters
