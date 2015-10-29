@@ -200,9 +200,7 @@ this.store.query('echonest-genre', {
 
 [Song Docs](http://developer.echonest.com/docs/v4/song.html)
 
-Supported: `search`
-
-Unsupported: `profile`
+Supported: `search`, `profile`
 
 ##### Buckets
 
@@ -460,11 +458,41 @@ Sort Options: Add `-asc` or `-desc` to indicate sort direction
 
 For more available search parameters, visit the [Song Search API Docs](http://developer.echonest.com/docs/v4/song.html#search)
 
+### Track
+
+Supported: `profile`
+
+##### Buckets
+
+* `audio_summary` - returns summary audio parameters for the track
+
+```javascript
+this.store.queryRecord('echonest-track', {
+    method: 'profile',
+    id: 'TRTLKZV12E5AC92E11',
+    bucket: ['audio_summary']
+});
+```
+
 #### Profile
 
-_Currently Unsupported_
+```javascript
+this.store.queryRecord('echonest-track', {
+    method: 'profile',
+    id: 'TRTLKZV12E5AC92E11'
+});
+```
 
-### Track
+Alternatively, you may lookup tracks by their `md5` hash:
+
+```javascript
+this.store.queryRecord('echonest-track', {
+    method: 'profile',
+    md5: '881f4e47e88e8b570e34a3b49c8262ac'
+});
+```
+
+#### Upload
 
 _Currently Unsupported_
 

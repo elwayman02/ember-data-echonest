@@ -1,17 +1,17 @@
 {
   "stats": {
-    "suites": 48,
-    "tests": 59,
-    "passes": 59,
+    "suites": 56,
+    "tests": 68,
+    "passes": 68,
     "pending": 0,
     "failures": 0,
-    "start": "2015-10-29T06:29:37.383Z",
-    "end": "2015-10-29T06:29:38.292Z"
+    "start": "2015-10-29T07:25:01.750Z",
+    "end": "2015-10-29T07:25:02.802Z"
   },
   "coverage": {
     "total": {
-      "statementsTotal": 78,
-      "statementsCovered": 78,
+      "statementsTotal": 88,
+      "statementsCovered": 88,
       "percentage": 100
     },
     "files": [
@@ -29,6 +29,12 @@
       },
       {
         "name": "ember-data-echonest/adapters/echonest-song",
+        "statementsTotal": 4,
+        "statementsCovered": 4,
+        "percentage": 100
+      },
+      {
+        "name": "ember-data-echonest/adapters/echonest-track",
         "statementsTotal": 4,
         "statementsCovered": 4,
         "percentage": 100
@@ -59,12 +65,18 @@
       },
       {
         "name": "ember-data-echonest/serializers/echonest",
-        "statementsTotal": 21,
-        "statementsCovered": 21,
+        "statementsTotal": 24,
+        "statementsCovered": 24,
         "percentage": 100
       },
       {
         "name": "ember-data-echonest/serializers/echonest-song",
+        "statementsTotal": 3,
+        "statementsCovered": 3,
+        "percentage": 100
+      },
+      {
+        "name": "ember-data-echonest/serializers/echonest-track",
         "statementsTotal": 3,
         "statementsCovered": 3,
         "percentage": 100

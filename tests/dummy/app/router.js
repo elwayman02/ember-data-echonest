@@ -14,8 +14,11 @@ Router.map(function () {
         this.route('similar');
     });
     this.route('songs', function () {
-        this.route('search');
         this.route('profile');
+        this.route('search');
+    });
+    this.route('tracks', function () {
+        this.route('profile', { path: '/' });
     });
 });
 
