@@ -19,6 +19,7 @@ export default Model.extend({
     songDiscoveryRank: attr('number'),
     songHotttnesss: attr('number'),
     songHotttnesssRank: attr('number'),
-    songType: attr(),
-    title: attr('string')
+    songType: attr(), // array
+    title: attr('string'),
+    tracks: attr() // echonest-track
 });

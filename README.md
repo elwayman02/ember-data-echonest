@@ -63,6 +63,10 @@ unless otherwise noted.
 
 _Currently Unsupported_
 
+#### List Terms
+
+_Currently Unsupported_
+
 ### Genre
 
 [Genre Docs](http://developer.echonest.com/docs/v4/genre.html)
@@ -71,8 +75,8 @@ Supported: `list`, `profile`, `search`, `similar`
 
 ##### Buckets
 
-`urls` - Include urls tied to the genre (generally wikipedia)
-`description` - Include a text description of the genre
+* `urls` - Include urls tied to the genre (generally wikipedia)
+* `description` - Include a text description of the genre
 
 ```javascript
 this.store.query('echonest-genre', {
@@ -166,7 +170,7 @@ this.store.query('echonest-genre', {
 
 ##### Optional
 
-*Results*: Number of desired results _(0+, Default: 15)_
+*results*: Number of desired results _(0+, Default: 15)_
 
 ```javascript
 this.store.query('echonest-genre', {
@@ -180,7 +184,7 @@ Note: The [Similar API Docs](http://developer.echonest.com/docs/v4/genre.html#si
 `results` is _100_, but my testing indicates the actual default is _15_. Additionally, they document a max value of 100, 
 but any value is respected.
 
-*Start*: Desired index of the first result returned _(0+, Default: 0)_
+*start*: Desired index of the first result returned _(0+, Default: 0)_
 
 Note: The docs indicate 0/15/30 as the only accepted indices, but again, any value seems to be allowed.
 
@@ -193,6 +197,241 @@ this.store.query('echonest-genre', {
 ```
 
 ### Song
+
+[Song Docs](http://developer.echonest.com/docs/v4/song.html)
+
+Supported: `search`
+
+Unsupported: `profile`
+
+##### Buckets
+
+* `audio_summary` - returns summary audio parameters for the song
+* `artist_discovery` - returns the discovery score for the song's artist. This is a measure of how unexpectedly popular the artist is.
+* `artist_discovery_rank` - returns the discovery rank for the song's artist
+* `artist_familiarity` - returns the familiarity for the song's artist
+* `artist_familiarity_rank` - returns the familiarity rank for the song's artist
+* `artist_hotttnesss` - returns the hotttnesss for the song's artist
+* `artist_hotttnesss_rank` - returns the hotttnesss rank for the song's artist
+* `artist_location` - returns information about the location of origin for the song's artist
+* `song_currency` - returns the currency score of the song. This is a measure of how recently popular the song is.
+* `song_currency_rank` - returns the currency rank of the song.
+* `song_discovery` - returns the discovery score of the song. This is a measure of how unexpectedly popular the song is.
+* `song_discovery_rank` - returns the discovery rank of the song.
+* `song_hotttnesss` - returns the hotttnesss of the song
+* `song_hotttnesss_rank` - returns the hotttnesss rank of the song
+* `song_type` - returns a list of song types for the song. Possible song types returned are: 'christmas', 'live' 'studio', 'acoustic', and 'electric'
+* `tracks` - returns detailed track information for the song. You must also specify a Rosetta id space such as 7digital-US.
+* `id:rosetta-catalog` - returns catalog specific information about the song for the given catalog. See Project Rosetta Stone for details.
+* `id:Personal-Catalog-ID` - returns personal catalog specific information about the song for the given catalog. See Project Rosetta Stone for details.
+
+```javascript
+this.store.query('echonest-song', {
+    method: 'search',
+    title: 'the lion sleeps tonight',
+    bucket: ['song_currency', 'song_discovery', 'song_hotttnesss', 'song_type']
+});
+```
+
+#### Search
+
+Returns a list of songs matching the provided query parameters
+
+```javascript
+this.store.query('echonest-song', {
+    method: 'search',
+    title: 'bohemian rhapsody'
+});
+```
+
+##### Optional
+
+The parameters below can be used individually or in combination to refine the results:
+
+*title*: The title of the song
+
+```javascript
+this.store.query('echonest-song', {
+    method: 'search',
+    title: 'boom boom pow'
+});
+```
+
+*artist*: The name of the primary artist
+
+```javascript
+this.store.query('echonest-song', {
+    method: 'search',
+    artist: 'justin timberlake'
+});
+```
+
+*combined*: Query both the artist and title fields with the same string
+
+```javascript
+this.store.query('echonest-song', {
+    method: 'search',
+    combined: 'nirvana'
+});
+```
+
+*description*: A description of the artist
+
+```javascript
+this.store.query('echonest-song', {
+    method: 'search',
+    description: 'emo'
+});
+```
+
+Multiple descriptions:
+
+```javascript
+this.store.query('echonest-song', {
+    method: 'search',
+    description: ['emo', 'alt-rock']
+});
+```
+
+*style*: A musical style or genre
+
+See [List Terms](#list-terms) for more information about available styles.
+
+```javascript
+this.store.query('echonest-song', {
+    method: 'search',
+    style: 'jazz'
+});
+```
+
+Multiple styles:
+
+```javascript
+this.store.query('echonest-song', {
+    method: 'search',
+    style: ['jazz', 'funky']
+});
+```
+
+*mood*: A song's mood
+
+See [List Terms](#list-terms) for more information about available moods.
+
+```javascript
+this.store.query('echonest-song', {
+    method: 'search',
+    mood: 'happy'
+});
+```
+
+Multiple moods:
+
+```javascript
+this.store.query('echonest-song', {
+    method: 'search',
+    mood: ['happy', 'sad']
+});
+```
+
+*artist_id*: An Echo Nest or Rosetta artist ID
+
+```javascript
+this.store.query('echonest-song', {
+    method: 'search',
+    artist_id: 'ARH6W4X1187B99274F'
+});
+```
+
+*song_type*: Restrict results to a specific type of song _('acoustic', 'christmas', 'electric', 'live', 'studio')_
+
+```javascript
+this.store.query('echonest-song', {
+    method: 'search',
+    title: 'boom boom pow',
+    song_type: 'live'
+});
+```
+
+Multiple song types:
+
+```javascript
+this.store.query('echonest-song', {
+    method: 'search',
+    title: 'boom boom pow',
+    song_type: ['live', 'electric']
+});
+```
+
+Song types can be modified with a state dictating whether to include or exclude that type:
+
+* `true` - Include the type in results (Default)
+* `false` - Exclude the type from results
+
+```javascript
+this.store.query('echonest-song', {
+    method: 'search',
+    title: 'boom boom pow',
+    song_type: ['live', 'electric:true', 'christmas: false']
+});
+```
+
+The above query would return songs that are both `live` and `electric`, but not `christmas`.
+
+*results*: Number of desired results _(0-100, Default: 15)_
+
+```javascript
+this.store.query('echonest-song', {
+    method: 'search',
+    title: 'boom boom pow',
+    results: 100
+});
+```
+
+*start*: Desired index of the first result returned _(0+, Default: 0)_
+
+Note: The docs indicate 0/15/30 as the only accepted indices, but any value seems to be allowed.
+
+```javascript
+this.store.query('echonest-song', {
+    method: 'search',
+    title: 'boom boom pow',
+    start: 20
+});
+```
+
+*sort*: Indicates how results should be ordered
+
+```javascript
+this.store.query('echonest-song', {
+    method: 'search',
+    title: 'boom boom pow',
+    sort: 'song_hotttnesss-desc'
+});
+```
+
+Sort Options: Add `-asc` or `-desc` to indicate sort direction
+
+* `tempo`
+* `duration`
+* `loudness`
+* `speechiness`
+* `acousticness`
+* `liveness` 
+* `artist_familiarity`
+* `artist_hotttnesss`
+* `artist_start_year`
+* `artist_end_year` 
+* `song_hotttnesss`
+* `latitude`
+* `longitude`
+* `mode`
+* `key`
+* `energy`
+* `danceability`
+
+For more available search parameters, visit the [Song Search API Docs](http://developer.echonest.com/docs/v4/song.html#search)
+
+#### Profile
 
 _Currently Unsupported_
 
