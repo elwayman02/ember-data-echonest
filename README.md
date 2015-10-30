@@ -5,7 +5,7 @@
 [![Code Climate](https://codeclimate.com/github/elwayman02/ember-data-echonest/badges/gpa.svg)](https://codeclimate.com/github/elwayman02/ember-data-echonest)
 [![Codacy Badge](https://api.codacy.com/project/badge/c02761bbd57647b9ab5efc83191a2ef2)](https://www.codacy.com/app/hawker-jordan/ember-data-echonest)
 
-This addon provides an abstraction layer for accessing the 
+This addon provides an abstraction layer for accessing the
 [Echo Nest V4 APIs](http://developer.echonest.com/docs/v4/index.html) via [Ember-Data](http://emberjs.com/api/data/).
 
 ## Requirements
@@ -25,22 +25,22 @@ please contact Echo Nest for licensing. I also highly recommend reviewing their 
 
 `ember install ember-data-echonest`
 
-Once you have installed the addon, you need to add your API Key to the ENV config. We highly recommend using 
-[ember-cli-dotenv](https://github.com/fivetanley/ember-cli-dotenv) to save your key to a `.env` file so that 
-you don't have to upload it to your project repo. I've called mine `ECHONEST_KEY`, and you can view the 
-[demo app's config](https://github.com/elwayman02/ember-data-echonest/blob/master/tests/dummy/config/environment.js#L21) 
+Once you have installed the addon, you need to add your API Key to the ENV config. We highly recommend using
+[ember-cli-dotenv](https://github.com/fivetanley/ember-cli-dotenv) to save your key to a `.env` file so that
+you don't have to upload it to your project repo. I've called mine `ECHONEST_KEY`, and you can view the
+[demo app's config](https://github.com/elwayman02/ember-data-echonest/blob/master/tests/dummy/config/environment.js#L21)
 to see how I've injected the key.
 
 ## Usage
 
-The addon exposes a number of models, adapters, and serializers you can use to access data from the 
-[Echo Nest API](http://developer.echonest.com/docs/v4/index.html). If a particular API is not supported, please 
+The addon exposes a number of models, adapters, and serializers you can use to access data from the
+[Echo Nest API](http://developer.echonest.com/docs/v4/index.html). If a particular API is not supported, please
 review our [issue list](https://github.com/elwayman02/ember-data-echonest/issues) and create a new one if it has
 not yet been requested. Contributions especially welcome, as well!
 
 #### Methods
 
-Each section below details the usage of a particular type of data provided by Echo Nest. Within these sections are 
+Each section below details the usage of a particular type of data provided by Echo Nest. Within these sections are
 specific methods used for retrieving that model type. In order to utilize these APIs, you must pass the name
 of the method you wish to use for your request:
 
@@ -54,14 +54,77 @@ This parameter must be passed in order for Ember-Data-Echonest to know how to co
 
 #### Buckets
 
-Many of the APIs have additional query params called buckets that allow you to specify additional information to be 
-returned in the response. In order to use these buckets, you would pass a query param `bucket` to Ember-Data with 
+Many of the APIs have additional query params called buckets that allow you to specify additional information to be
+returned in the response. In order to use these buckets, you would pass a query param `bucket` to Ember-Data with
 an array of strings containing the names of each bucket to be included. Every model type has the same buckets available,
 unless otherwise noted.
 
 ### Artist
 
-_Currently Unsupported_
+[Artist Docs](http://developer.echonest.com/docs/v4/artist.html)
+
+Supported: `biographies`, `blogs`, `familiarity`
+
+##### Buckets
+
+- `biographies` - Returns up to the 15 most recent biographies found on the web related to the artist
+- `blogs` - Returns up to the 15 most recent blogs found on the web related to the artist
+- `discovery` - Returns the discovery score for the artist. This is a measure of how unexpectedly popular the artist is
+- `discovery_rank` - Returns the discovery rank for the artist
+- `doc_counts` - Returns document counts for each of the various artist document types
+- `familiarity`	- Returns the familiarity for the artist
+- `familiarity_rank` -	Returns the familiarity rank for the artist
+- `genre` -	Returns all genres for an artist
+- `hotttnesss` - Returns the hotttnesss for the artist
+- `hotttnesss_rank` -	Returns the hotttnesss rank for the artist
+- `images` -	Returns up to the 15 most recent images found on the web related to the artist
+- `artist_location`	- Returns information about the location of origin for the artist
+- `news` -	Returns up to the 15 most recent news articles found on the web related to the artist
+- `reviews` -	Returns up to the 15 most recent reviews found on the web related to the artist
+- `songs` -	Returns up to the 15 hotttest songs for the artist
+- `urls` -	Returns links to this artist's pages on various sites
+- `video` -	Returns up to the 15 most recent videos found on the web related to the artist
+- `years_active` -	Returns years active information for the artist
+
+```javascript
+this.store.queryRecord('echonest-artist', {
+    method: 'profile',
+    bucket: ['biographies', 'images', 'urls']
+});
+```
+
+#### Biographies
+
+Returns a list of artist biographies
+
+```javascript
+this.store.query('echonest-biography', {
+    method: 'biographies',
+    name: 'Weezer'
+});
+```
+
+#### Blogs
+
+Returns a list of blog articles related to an artist
+
+```javascript
+return this.store.query('echonest-blog', {
+    method: 'blogs',
+    name: 'Deadmau5'
+});
+```
+
+#### Familiarity
+
+Returns a numerical estimation of how familiar an artist currently is to the world
+
+```javascript
+return this.store.queryRecord('echonest-artist', {
+    method: 'familiarity',
+    name: 'Radiohead'
+});
+```
 
 #### List Terms
 
@@ -81,7 +144,7 @@ Supported: `list`, `profile`, `search`, `similar`
 ```javascript
 this.store.query('echonest-genre', {
     method: 'something',
-    bucket: ['urls', 'description'] 
+    bucket: ['urls', 'description']
 });
 ```
 
@@ -142,7 +205,7 @@ this.store.query('echonest-genre', {
 ```
 
 Note: The [Search API Docs](http://developer.echonest.com/docs/v4/genre.html#search) indicate the default value for
-`results` is _100_, but my testing indicates the actual default is _15_. Additionally, they document a max value of 100, 
+`results` is _100_, but my testing indicates the actual default is _15_. Additionally, they document a max value of 100,
 but any value is respected.
 
 *Start*: Desired index of the first result returned _(0+, Default: 0)_
@@ -181,7 +244,7 @@ this.store.query('echonest-genre', {
 ```
 
 Note: The [Similar API Docs](http://developer.echonest.com/docs/v4/genre.html#similar) indicate the default value for
-`results` is _100_, but my testing indicates the actual default is _15_. Additionally, they document a max value of 100, 
+`results` is _100_, but my testing indicates the actual default is _15_. Additionally, they document a max value of 100,
 but any value is respected.
 
 *start*: Desired index of the first result returned _(0+, Default: 0)_
@@ -443,11 +506,11 @@ Sort Options: Add `-asc` or `-desc` to indicate sort direction
 * `loudness`
 * `speechiness`
 * `acousticness`
-* `liveness` 
+* `liveness`
 * `artist_familiarity`
 * `artist_hotttnesss`
 * `artist_start_year`
-* `artist_end_year` 
+* `artist_end_year`
 * `song_hotttnesss`
 * `latitude`
 * `longitude`

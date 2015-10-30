@@ -1,0 +1,16 @@
+<table>
+  <tr>
+    <th>Bio</th>
+    <th>Source</th>
+    <th>Source URL</th>
+    <th>License Type</th>
+  </tr>
+  {{#each model as |bio|}}
+    <tr>
+      <td>{{bio.text}}</td>
+      <td>{{bio.site}}</td>
+      <td>{{bio.url}}</td>
+      <td>{{bio.license.type}}</td>
+    </tr>
+  {{/each}}
+</table>
