@@ -1,22 +1,22 @@
 {
   "stats": {
-    "suites": 56,
-    "tests": 68,
-    "passes": 68,
+    "suites": 87,
+    "tests": 101,
+    "passes": 101,
     "pending": 0,
     "failures": 0,
-    "start": "2015-10-29T07:25:01.750Z",
-    "end": "2015-10-29T07:25:02.802Z"
+    "start": "2015-10-30T07:42:49.631Z",
+    "end": "2015-10-30T07:42:51.142Z"
   },
   "coverage": {
     "total": {
-      "statementsTotal": 88,
-      "statementsCovered": 88,
+      "statementsTotal": 127,
+      "statementsCovered": 127,
       "percentage": 100
     },
     "files": [
       {
-        "name": "ember-data-echonest/adapters/echonest-genre",
+        "name": "ember-data-echonest/adapters/echonest-artist",
         "statementsTotal": 4,
         "statementsCovered": 4,
         "percentage": 100
@@ -25,6 +25,24 @@
         "name": "ember-data-echonest/adapters/echonest",
         "statementsTotal": 28,
         "statementsCovered": 28,
+        "percentage": 100
+      },
+      {
+        "name": "ember-data-echonest/adapters/echonest-biography",
+        "statementsTotal": 3,
+        "statementsCovered": 3,
+        "percentage": 100
+      },
+      {
+        "name": "ember-data-echonest/adapters/echonest-blog",
+        "statementsTotal": 3,
+        "statementsCovered": 3,
+        "percentage": 100
+      },
+      {
+        "name": "ember-data-echonest/adapters/echonest-genre",
+        "statementsTotal": 4,
+        "statementsCovered": 4,
         "percentage": 100
       },
       {
@@ -37,6 +55,24 @@
         "name": "ember-data-echonest/adapters/echonest-track",
         "statementsTotal": 4,
         "statementsCovered": 4,
+        "percentage": 100
+      },
+      {
+        "name": "ember-data-echonest/models/echonest-artist",
+        "statementsTotal": 5,
+        "statementsCovered": 5,
+        "percentage": 100
+      },
+      {
+        "name": "ember-data-echonest/models/echonest-biography",
+        "statementsTotal": 5,
+        "statementsCovered": 5,
+        "percentage": 100
+      },
+      {
+        "name": "ember-data-echonest/models/echonest-blog",
+        "statementsTotal": 5,
+        "statementsCovered": 5,
         "percentage": 100
       },
       {
@@ -58,15 +94,33 @@
         "percentage": 100
       },
       {
-        "name": "ember-data-echonest/serializers/echonest-genre",
+        "name": "ember-data-echonest/serializers/echonest-artist",
         "statementsTotal": 3,
         "statementsCovered": 3,
         "percentage": 100
       },
       {
         "name": "ember-data-echonest/serializers/echonest",
-        "statementsTotal": 24,
-        "statementsCovered": 24,
+        "statementsTotal": 29,
+        "statementsCovered": 29,
+        "percentage": 100
+      },
+      {
+        "name": "ember-data-echonest/serializers/echonest-biography",
+        "statementsTotal": 3,
+        "statementsCovered": 3,
+        "percentage": 100
+      },
+      {
+        "name": "ember-data-echonest/serializers/echonest-blog",
+        "statementsTotal": 3,
+        "statementsCovered": 3,
+        "percentage": 100
+      },
+      {
+        "name": "ember-data-echonest/serializers/echonest-genre",
+        "statementsTotal": 3,
+        "statementsCovered": 3,
         "percentage": 100
       },
       {

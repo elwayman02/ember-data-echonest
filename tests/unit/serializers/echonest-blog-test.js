@@ -1,14 +1,14 @@
-import { moduleForModel, test } from 'ember-qunit';
+import { moduleFor } from 'ember-qunit';
+import test from 'dummy/tests/ember-sinon-qunit/test';
 
-moduleForModel('echonest-blog', 'Unit | Serializer | echonest blog', {
-  needs: ['serializer:echonest-blog']
+let serializer;
+
+moduleFor('serializer:echonest-blog', 'Unit | Serializer | echonest blog', {
+    setup() {
+        serializer = this.subject();
+    }
 });
 
-// Replace this with your real tests.
-test('it serializes records', function(assert) {
-  var record = this.subject();
-
-  var serializedRecord = record.serialize();
-
-  assert.ok(serializedRecord);
+test('modelKey', function (assert) {
+    assert.equal(serializer.get('modelKey'), 'blog', 'default modelKey is set');
 });

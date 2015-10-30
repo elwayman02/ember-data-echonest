@@ -87,7 +87,7 @@ Supported: `biographies`, `blogs`, `familiarity`
 - `years_active` -	Returns years active information for the artist
 
 ```javascript
-this.store.query('echonest-artist', {
+this.store.queryRecord('echonest-artist', {
     method: 'profile',
     bucket: ['biographies', 'images', 'urls']
 });
@@ -120,7 +120,7 @@ return this.store.query('echonest-blog', {
 Returns a numerical estimation of how familiar an artist currently is to the world
 
 ```javascript
-return this.store.query('echonest-artist', {
+return this.store.queryRecord('echonest-artist', {
     method: 'familiarity',
     name: 'Radiohead'
 });

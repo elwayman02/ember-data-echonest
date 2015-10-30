@@ -19,6 +19,7 @@ Router.map(function () {
     });
     this.route('tracks', function () {
         this.route('profile', { path: '/' });
+    });
     this.route('artists', function() {
         this.route('biographies');
         this.route('blogs');

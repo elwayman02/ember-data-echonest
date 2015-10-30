@@ -3,10 +3,8 @@
     <th>Artist</th>
     <th>Familiarity Rating</th>
   </tr>
-  {{#each model as |artist|}}
-    <tr>
-      <td>{{artist.name}}</td>
-      <td>{{artist.familiarity}}</td>
-    </tr>
-  {{/each}}
+  <tr>
+    <td>{{model.name}}</td>
+    <td>{{model.familiarity}}</td>
+  </tr>
 </table>

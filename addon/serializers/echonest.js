@@ -7,6 +7,8 @@ const { RESTSerializer } = DS;
 export default RESTSerializer.extend({
     modelKey: '',
 
+    removalList: [],
+
     pluralizeKey(key) {
         return pluralize(key);
     },
@@ -15,15 +17,25 @@ export default RESTSerializer.extend({
         return underscore(attr);
     },
 
+    deleteProperties(hash) {
+        const removalList = this.get('removalList');
+
+        removalList.forEach(function(property) {
+            delete hash[property];
+        });
+    },
+
     normalizeResponse(store, primaryModelClass, payload, id, requestType) {
         const key = this.get('modelKey');
         const pluralKey = this.pluralizeKey(key);
         if (isPresent(key) && isPresent(payload.response)) {
             if (isPresent(payload.response[pluralKey])) {
-                const items = payload.response[pluralKey].map(function (item, index) {
+                const items = payload.response[pluralKey].map((item, index) => {
                     if (isBlank(item.id)) {
                         item.id = index;
                     }
+
+                    this.deleteProperties(item);
                     return item;
                 });
                 return this._super(store, primaryModelClass, { [`echonest-${key}`]: items }, id, requestType);

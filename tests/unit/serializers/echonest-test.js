@@ -125,3 +125,13 @@ test('normalizeResponse builds response array', function (assert) {
 
     assert.equal(result, foo, 'returns result from _super');
 });
+
+
+test('deleteProperties', function (assert) {
+    serializer.set('removalList', ['truncated']);
+
+    const hash = { id: 2, truncated: true };
+    serializer.deleteProperties(hash);
+
+    assert.deepEqual(hash, { id: 2 }, 'deleteProperties removes properties');
+});

@@ -4,7 +4,7 @@ const { Route } = Ember;
 
 export default Route.extend({
     model() {
-        return this.store.query('echonest-artist', {
+        return this.store.queryRecord('echonest-artist', {
             method: 'familiarity',
             name: 'Radiohead'
         });
