@@ -1,7 +1,6 @@
 import { moduleFor, test } from 'ember-qunit';
 
-moduleFor('adapter:echonest-genre', 'Unit | Adapter | echonest genre', {
-});
+moduleFor('adapter:echonest-genre', 'Unit | Adapter | echonest genre', {});
 
 test('pathForType', function (assert) {
   const adapter = this.subject({

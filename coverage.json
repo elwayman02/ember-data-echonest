@@ -1,17 +1,17 @@
 {
   "stats": {
-    "suites": 31,
-    "tests": 40,
-    "passes": 40,
+    "suites": 56,
+    "tests": 68,
+    "passes": 68,
     "pending": 0,
     "failures": 0,
-    "start": "2015-10-28T01:09:15.280Z",
-    "end": "2015-10-28T01:09:15.888Z"
+    "start": "2015-10-29T07:25:01.750Z",
+    "end": "2015-10-29T07:25:02.802Z"
   },
   "coverage": {
     "total": {
-      "statementsTotal": 55,
-      "statementsCovered": 55,
+      "statementsTotal": 88,
+      "statementsCovered": 88,
       "percentage": 100
     },
     "files": [
@@ -28,7 +28,31 @@
         "percentage": 100
       },
       {
+        "name": "ember-data-echonest/adapters/echonest-song",
+        "statementsTotal": 4,
+        "statementsCovered": 4,
+        "percentage": 100
+      },
+      {
+        "name": "ember-data-echonest/adapters/echonest-track",
+        "statementsTotal": 4,
+        "statementsCovered": 4,
+        "percentage": 100
+      },
+      {
         "name": "ember-data-echonest/models/echonest-genre",
+        "statementsTotal": 5,
+        "statementsCovered": 5,
+        "percentage": 100
+      },
+      {
+        "name": "ember-data-echonest/models/echonest-song",
+        "statementsTotal": 5,
+        "statementsCovered": 5,
+        "percentage": 100
+      },
+      {
+        "name": "ember-data-echonest/models/echonest-track",
         "statementsTotal": 5,
         "statementsCovered": 5,
         "percentage": 100
@@ -41,8 +65,20 @@
       },
       {
         "name": "ember-data-echonest/serializers/echonest",
-        "statementsTotal": 15,
-        "statementsCovered": 15,
+        "statementsTotal": 24,
+        "statementsCovered": 24,
+        "percentage": 100
+      },
+      {
+        "name": "ember-data-echonest/serializers/echonest-song",
+        "statementsTotal": 3,
+        "statementsCovered": 3,
+        "percentage": 100
+      },
+      {
+        "name": "ember-data-echonest/serializers/echonest-track",
+        "statementsTotal": 3,
+        "statementsCovered": 3,
         "percentage": 100
       }
     ]

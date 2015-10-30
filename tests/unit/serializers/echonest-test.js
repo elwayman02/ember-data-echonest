@@ -10,9 +10,23 @@ moduleFor('serializer:echonest', 'Unit | Serializer | echonest', {
     }
 });
 
-let store, modelClass, payload, response, key, items, id, type, foo, normalizeStub;
+test('pluralizeKey', function (assert) {
+    const key = 'foo';
+    const result = serializer.pluralizeKey(key);
 
-function setupNormalizeTests(showResp, showitems) {
+    assert.equal(result, `${key}s`, 'pluralizes key');
+});
+
+test('keyForAttribute', function (assert) {
+    const attr = 'fooBar';
+    const result = serializer.keyForAttribute(attr);
+
+    assert.equal(result, 'foo_bar', 'converts attribute to underscore');
+});
+
+let store, modelClass, payload, response, key, item, items, id, type, foo, normalizeStub;
+
+function setupNormalizeTests(showResp, showItems) {
     store = {};
     modelClass = 'model';
     id = 1234;
@@ -22,6 +36,9 @@ function setupNormalizeTests(showResp, showitems) {
 
     payload = { stuff: 'things' };
     response = {};
+    item = {
+        name: 'foo'
+    };
     items = [{
         name: 'baz'
     }, {
@@ -29,8 +46,10 @@ function setupNormalizeTests(showResp, showitems) {
     }];
 
     if (showResp) {
-        if (showitems) {
+        if (showItems === 2) {
             response.items = items;
+        } else if (showItems === 1) {
+            response.item = item;
         }
         payload.response = response;
     }
@@ -73,8 +92,22 @@ test('normalizeResponse does nothing if no items', function (assert) {
     assert.equal(result, foo, 'returns result from _super');
 });
 
-test('normalizeResponse builds response', function (assert) {
-    const result = setupNormalizeTests.call(this, true, true);
+test('normalizeResponse builds single response', function (assert) {
+    const result = setupNormalizeTests.call(this, true, 1);
+
+    assert.ok(normalizeStub.calledOnce, '_normalizeResponse was called once');
+
+    const { args } = normalizeStub.firstCall;
+    assertNormalizeArguments(assert, args);
+
+    const [,,itemPayload] = args;
+    assert.equal(itemPayload[`echonest-${key}`], item, 'single item is returned');
+
+    assert.equal(result, foo, 'returns result from _super');
+});
+
+test('normalizeResponse builds response array', function (assert) {
+    const result = setupNormalizeTests.call(this, true, 2);
 
     assert.ok(normalizeStub.calledOnce, '_normalizeResponse was called once');
 

@@ -1,3 +1,5 @@
+@import "ember-power-select";
+
 /* General Styles */
 body {
     padding: 0 10px;
@@ -34,32 +36,37 @@ input {
 /* Table Styles */
 table {
     border-collapse: collapse;
+
+    th {
+        padding: 5px 0;
+    }
+
+    td {
+        padding: 5px;
+
+        ul {
+            margin: 0;
+            padding: 0;
+
+            li {
+                list-style-type: none;
+            }
+        }
+    }
 }
 
 table, th, td {
     border: 1px solid darkgray;
 }
 
-th {
-    padding: 5px 0;
-}
-
-td {
-    padding: 5px;
-}
-
-td ul {
-    margin: 0;
-    padding: 0;
-}
-
-td ul li {
-    list-style-type: none;
-}
-
 /* Search Styles */
-.searchContainer {
+.searchContainer,
+.typeSearch {
     align-items: center;
     display: flex;
     flex-direction: row;
+}
+
+.ember-power-select-wrapper {
+    min-width: 150px;
 }

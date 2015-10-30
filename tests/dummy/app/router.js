@@ -13,6 +13,13 @@ Router.map(function () {
         this.route('search');
         this.route('similar');
     });
+    this.route('songs', function () {
+        this.route('profile');
+        this.route('search');
+    });
+    this.route('tracks', function () {
+        this.route('profile', { path: '/' });
+    });
 });
 
 export default Router;
