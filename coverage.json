@@ -1,18 +1,18 @@
 {
   "stats": {
     "suites": 90,
-    "tests": 104,
-    "passes": 104,
+    "tests": 106,
+    "passes": 106,
     "pending": 0,
     "failures": 0,
-    "start": "2015-11-01T08:54:03.424Z",
-    "end": "2015-11-01T08:54:04.942Z"
+    "start": "2015-11-01T09:13:45.633Z",
+    "end": "2015-11-01T09:13:47.256Z"
   },
   "coverage": {
     "total": {
       "statementsTotal": 129,
-      "statementsCovered": 125,
-      "percentage": 96.9
+      "statementsCovered": 129,
+      "percentage": 100
     },
     "files": [
       {
@@ -48,8 +48,8 @@
       {
         "name": "ember-data-echonest/adapters/echonest-song",
         "statementsTotal": 7,
-        "statementsCovered": 3,
-        "percentage": 42.86
+        "statementsCovered": 7,
+        "percentage": 100
       },
       {
         "name": "ember-data-echonest/adapters/echonest-track",

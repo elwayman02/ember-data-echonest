@@ -51,20 +51,20 @@ function setupBuildURLTests(noQuery, noMethod) {
 test('buildURL adds method to url', function (assert) {
     const result = setupBuildURLTests.call(this);
 
-    assert.ok(result.indexOf(method), 'method appended to url');
+    assert.ok(result.includes(method), 'method appended to url');
     assert.equal(query.method, undefined, 'method deleted from query');
 });
 
 test('buildURL does nothing if no query is passed', function (assert) {
     const result = setupBuildURLTests.call(this, true);
 
-    assert.equal(result.indexOf(method), -1, 'no method was added to url');
+    assert.ok(!result.includes(method), 'no method was added to url');
 });
 
 test('buildURL does nothing if no method is passed', function (assert) {
     const result = setupBuildURLTests.call(this, false, true);
 
-    assert.equal(result.indexOf(method), -1, 'no method was added to url');
+    assert.ok(!result.includes(method), 'no method was added to url');
 });
 
 let url, type, data, options;
@@ -81,23 +81,6 @@ function setupOptionsTests(noData) {
 
     return adapter.ajaxOptions(url, type, options);
 }
-
-//test('ajaxOptions asserts API key existence', function (assert) {
-//    const spy = this.spy(Ember, 'assert');
-//
-//    setupOptionsTests.call(this);
-//
-//    let args;
-//    if (spy.calledOnce) {
-//        assert.ok(spy.calledOnce, 'assert was called once');
-//        args = spy.firstCall.args;
-//    } else { // TODO: Remove these checks and just use the above once Ember v2.2.0 lands
-//        assert.equal(spy.callCount, 13, 'assert was called 13 times');
-//        args = spy.getCall(4).args;
-//    }
-//    assert.equal(Ember.typeOf(args[0]), 'string', 'Error message passed to assert');
-//    assert.equal(args[1], ECHONEST_KEY, 'apiKey passed to assert');
-//});
 
 test('ajaxOptions builds data hash for request', function (assert) {
     const result = setupOptionsTests.call(this);
