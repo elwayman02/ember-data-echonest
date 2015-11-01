@@ -1,30 +1,44 @@
 import Ember from 'ember';
+import conditional from 'ember-cpm/macros/conditional';
 
 const { Component, computed, isEqual, isPresent } = Ember;
 
 export default Component.extend({
-    songMap: computed.map('songs', function (song) {
+    songMap: computed.map('songs', function (song, index) {
         const types = song.get('songType');
         if (isPresent(types)) {
             song.set('types', types.join(', '));
         }
+        song.set('index', index+1);
         return song;
     }),
 
-    songList: computed.sort('songMap', 'sortBy'),
+    sortedSongs: computed.sort('songMap', 'sortBy'),
+
+    songList: conditional('useSort', 'sortedSongs', 'songMap'),
 
     sortBy: [],
 
+    showDetails: true,
+
+    allowSorting: true,
+
+    useSort: computed('allowSorting', 'sortBy', function () {
+        return this.get('allowSorting') && isPresent(this.get('sortBy'));
+    }),
+
     actions: {
         updateSortBy(attr) {
-            const sortBy = this.get('sortBy')[0];
-            let newSortBy = `${attr}:asc`;
+            if (this.get('allowSorting')) {
+                const sortBy = this.get('sortBy')[0];
+                let newSortBy = `${attr}:asc`;
 
-            if (isPresent(sortBy) && isEqual(sortBy, `${attr}:asc`)) {
-                newSortBy = `${attr}:desc`;
+                if (isPresent(sortBy) && isEqual(sortBy, `${attr}:asc`)) {
+                    newSortBy = `${attr}:desc`;
+                }
+
+                this.set('sortBy', [newSortBy]);
             }
-
-            this.set('sortBy', [newSortBy]);
         }
     }
 });

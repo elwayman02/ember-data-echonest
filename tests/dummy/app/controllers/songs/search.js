@@ -17,7 +17,7 @@ export default Controller.extend({
     searchTypes,
     searchKey: searchTypes[0],
 
-    genres: [],
+    songs: [],
 
     actions: {
         search(keyword) {

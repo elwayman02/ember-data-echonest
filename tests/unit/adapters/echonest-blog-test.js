@@ -1,12 +1,17 @@
 import { moduleFor, test } from 'ember-qunit';
 
+let adapter;
+
 moduleFor('adapter:echonest-blog', 'Unit | Adapter | echonest blog', {
-  // Specify the other units that are required for this test.
-  // needs: ['serializer:foo']
+    setup() {
+        adapter = this.subject({
+            ENV: {
+                ECHONEST_KEY: 'ABCD1234'
+            }
+        });
+    }
 });
 
-// Replace this with your real tests.
-test('it exists', function(assert) {
-  var adapter = this.subject();
-  assert.ok(adapter);
+test('pathForType', function (assert) {
+    assert.equal(adapter.pathForType('echonest-blog'), 'artist', 'artist is returned from pathForType');
 });

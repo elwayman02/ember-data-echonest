@@ -7,11 +7,19 @@ var Router = Ember.Router.extend({
 
 Router.map(function () {
     this.route('index', { path: '/' });
+    this.route('artists', function() {
+        this.route('biographies');
+        this.route('blogs');
+        this.route('familiarity');
+    });
     this.route('genres', function () {
         this.route('list');
         this.route('profile');
         this.route('search');
         this.route('similar');
+    });
+    this.route('playlists', function () {
+        this.route('base');
     });
     this.route('songs', function () {
         this.route('profile');
@@ -19,11 +27,6 @@ Router.map(function () {
     });
     this.route('tracks', function () {
         this.route('profile', { path: '/' });
-    });
-    this.route('artists', function() {
-        this.route('biographies');
-        this.route('blogs');
-        this.route('familiarity');
     });
 });
 
