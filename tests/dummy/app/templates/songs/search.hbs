@@ -7,13 +7,13 @@
 </div>
 <div class="typeSearch">
     <span>Search By:</span>
-    {{#ember-power-select
+    {{#power-select
     onchange=(action (mut searchKey))
     options=searchTypes
     selected=searchKey
     as |type|}}
         {{type.label}}
-    {{/ember-power-select}}
+    {{/power-select}}
 </div>
 
 {{song-table songs=songs}}
