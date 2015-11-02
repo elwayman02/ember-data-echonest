@@ -1,0 +1,26 @@
+<div class="searchContainer">
+    {{input
+    enter='search'
+    placeholder='Search for an Artist...'
+    value=keyword}}
+    <button {{action 'search' keyword}}>Search</button>
+</div>
+Hotttnesss Type:
+<div class="radioContainer">
+    {{#paper-radio value='overall' selected=type}}Overall{{/paper-radio}}
+    {{#paper-radio value='social' selected=type}}Social{{/paper-radio}}
+    {{#paper-radio value='reviews' selected=type}}Reviews{{/paper-radio}}
+    {{#paper-radio value='mainstream' selected=type}}Mainstream{{/paper-radio}}
+</div>
+{{#if artist}}
+    <table>
+      <tr>
+        <th>Artist</th>
+        <th>Hotttnesss</th>
+      </tr>
+      <tr>
+        <td>{{artist.name}}</td>
+        <td>{{artist.hotttnesss}}</td>
+      </tr>
+    </table>
+{{/if}}

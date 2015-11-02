@@ -11,6 +11,7 @@ Router.map(function () {
         this.route('biographies');
         this.route('blogs');
         this.route('familiarity');
+        this.route('hotttnesss');
     });
     this.route('genres', function () {
         this.route('list');

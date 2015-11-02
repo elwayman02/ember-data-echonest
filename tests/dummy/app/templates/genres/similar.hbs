@@ -3,7 +3,7 @@
         enter='search'
         placeholder='Search for Genres similar to...'
         value=name}}
-    <button {{action 'search'}}>Find Similar</button>
+    <button {{action 'search' name}}>Find Similar</button>
 </div>
 
 {{genre-table genres=genres}}
