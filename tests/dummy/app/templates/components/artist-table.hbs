@@ -1,0 +1,42 @@
+{{#if artistList.length}}
+    <table>
+        <tr>
+            <th>Artist</th>
+            {{#if familiarity}}
+                <th>Familiarity</th>
+            {{/if}}
+            {{#if familiarityRank}}
+                <th>Familiarity Rank</th>
+            {{/if}}
+            {{#if hotttnesss}}
+                <th>Hotttnesss</th>
+            {{/if}}
+            {{#if hotttnesssRank}}
+                <th>Hotttnesss Rank</th>
+            {{/if}}
+            {{#if years}}
+                <th>Years Active</th>
+            {{/if}}
+        </tr>
+        {{#each artistList as |artist|}}
+            <tr>
+                <td>{{artist.name}}</td>
+                {{#if artist.familiarity}}
+                    <td>{{artist.familiarity}}</td>
+                {{/if}}
+                {{#if artist.familiarityRank}}
+                    <td>{{artist.familiarityRank}}</td>
+                {{/if}}
+                {{#if artist.hotttnesss}}
+                    <td>{{artist.hotttnesss}}</td>
+                {{/if}}
+                {{#if artist.hotttnesssRank}}
+                    <td>{{artist.hotttnesssRank}}</td>
+                {{/if}}
+                {{#if artist.years}}
+                    <td>{{artist.years}}</td>
+                {{/if}}
+            </tr>
+        {{/each}}
+    </table>
+{{/if}}

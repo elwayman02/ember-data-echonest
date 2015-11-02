@@ -63,9 +63,9 @@ unless otherwise noted.
 
 [Artist Docs](http://developer.echonest.com/docs/v4/artist.html)
 
-Supported: `biographies`, `blogs`, `familiarity`
-
 ##### Buckets
+
+Artist buckets are supported by the following methods: `extract`, `profile`, `search`, `similar`, `top_hottt`
 
 - `biographies` - Returns up to the 15 most recent biographies found on the web related to the artist
 - `blogs` - Returns up to the 15 most recent blogs found on the web related to the artist
@@ -89,6 +89,7 @@ Supported: `biographies`, `blogs`, `familiarity`
 ```javascript
 this.store.queryRecord('echonest-artist', {
     method: 'profile',
+    name: 'Calvin Harris',
     bucket: ['biographies', 'images', 'urls']
 });
 ```
@@ -172,11 +173,29 @@ return this.store.queryRecord('echonest-artist', {
 
 _Currently Unsupported_
 
+#### Profile
+
+Returns basic profile information for an artist
+
+```javascript
+return this.store.queryRecord('echonest-artist', {
+    method: 'profile',
+    name: 'Taylor Swift'
+});
+```
+
+An artist `name` or `id` can be provided. For example:
+
+```javascript
+return this.store.queryRecord('echonest-artist', {
+    method: 'profile',
+    id: 'ARH6W4X1187B99274F'
+});
+```
+
 ### Genre
 
 [Genre Docs](http://developer.echonest.com/docs/v4/genre.html)
-
-Supported: `list`, `profile`, `search`, `similar`
 
 ##### Buckets
 
@@ -304,8 +323,6 @@ this.store.query('echonest-genre', {
 ### Song
 
 [Song Docs](http://developer.echonest.com/docs/v4/song.html)
-
-Supported: `search`, `profile`
 
 ##### Buckets
 
@@ -565,8 +582,6 @@ For more available search parameters, visit the [Song Search API Docs](http://de
 
 ### Track
 
-Supported: `profile`
-
 ##### Buckets
 
 * `audio_summary` - returns summary audio parameters for the track
@@ -601,7 +616,7 @@ this.store.queryRecord('echonest-track', {
 
 _Currently Unsupported_
 
-### Playlisting
+### Playlist
 
 The Echo Nest API can be used to create playlists on the fly. To access it, simply query for a list of songs
 using the various `playlist` methods.

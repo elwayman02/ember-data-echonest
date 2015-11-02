@@ -12,15 +12,4 @@ Hotttnesss Type:
     {{#paper-radio value='reviews' selected=type}}Reviews{{/paper-radio}}
     {{#paper-radio value='mainstream' selected=type}}Mainstream{{/paper-radio}}
 </div>
-{{#if artist}}
-    <table>
-      <tr>
-        <th>Artist</th>
-        <th>Hotttnesss</th>
-      </tr>
-      <tr>
-        <td>{{artist.name}}</td>
-        <td>{{artist.hotttnesss}}</td>
-      </tr>
-    </table>
-{{/if}}
+{{artist-table artist=artist}}
