@@ -1,4 +1,5 @@
-@import "ember-power-select";
+@import 'ember-paper';
+@import 'ember-power-select';
 
 /* General Styles */
 body {
@@ -60,6 +61,7 @@ table, th, td {
 }
 
 /* Search Styles */
+.radioContainer,
 .searchContainer,
 .typeSearch {
     align-items: center;

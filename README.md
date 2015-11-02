@@ -117,12 +117,54 @@ return this.store.query('echonest-blog', {
 
 #### Familiarity
 
-Returns a numerical estimation of how familiar an artist currently is to the world
+Returns a numerical estimation of how familiar an artist is currently
 
 ```javascript
 return this.store.queryRecord('echonest-artist', {
     method: 'familiarity',
     name: 'Radiohead'
+});
+```
+
+An artist `name` or `id` can be provided. For example:
+
+```javascript
+return this.store.queryRecord('echonest-artist', {
+    method: 'familiarity',
+    id: 'ARH6W4X1187B99274F'
+});
+```
+
+#### Hotttnesss
+
+Returns a numerical description of how hottt an artist is currently
+
+```javascript
+return this.store.queryRecord('echonest-artist', {
+    method: 'hotttnesss',
+    name: 'Taylor Swift'
+});
+```
+
+An artist `name` or `id` can be provided. For example:
+
+```javascript
+return this.store.queryRecord('echonest-artist', {
+    method: 'hotttnesss',
+    id: 'ARH6W4X1187B99274F'
+});
+```
+
+*type*: Controls the type of hotttnesss that is used _(overall, social, reviews, mainstream, Default: overall)_
+
+Note: As of yet we have been unable to ascertain the usefulness of this parameter. 
+All tests of the API have returned the same results for an artist regardless of type.
+
+```javascript
+return this.store.queryRecord('echonest-artist', {
+    method: 'hotttnesss',
+    name: 'Taylor Swift',
+    type: 'mainstream'
 });
 ```
 

@@ -1,10 +1,19 @@
-<table>
-  <tr>
-    <th>Artist</th>
-    <th>Familiarity Rating</th>
-  </tr>
-  <tr>
-    <td>{{model.name}}</td>
-    <td>{{model.familiarity}}</td>
-  </tr>
-</table>
+<div class="searchContainer">
+    {{input
+    enter='search'
+    placeholder='Search for an Artist...'
+    value=keyword}}
+    <button {{action 'search' keyword}}>Search</button>
+</div>
+{{#if artist}}
+    <table>
+      <tr>
+        <th>Artist</th>
+        <th>Familiarity</th>
+      </tr>
+      <tr>
+        <td>{{artist.name}}</td>
+        <td>{{artist.familiarity}}</td>
+      </tr>
+    </table>
+{{/if}}
