@@ -12,6 +12,7 @@ Router.map(function () {
         this.route('blogs');
         this.route('familiarity');
         this.route('hotttnesss');
+        this.route('profile');
     });
     this.route('genres', function () {
         this.route('list');
