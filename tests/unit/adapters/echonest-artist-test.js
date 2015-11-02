@@ -1,13 +1,17 @@
 import { moduleFor, test } from 'ember-qunit';
 
+let adapter;
+
 moduleFor('adapter:echonest-artist', 'Unit | Adapter | echonest artist', {
-  unit: true
+    setup() {
+        adapter = this.subject({
+            ENV: {
+                ECHONEST_KEY: 'ABCD1234'
+            }
+        });
+    }
 });
 
-test('`pathForType` is correct', function(assert) {
-  assert.expect(1);
-
-  const adapter = this.subject();
-
-  assert.equal(adapter.pathForType(), 'artist');
+test('pathForType', function (assert) {
+    assert.equal(adapter.pathForType('echonest-artist'), 'artist', 'artist is returned from pathForType');
 });

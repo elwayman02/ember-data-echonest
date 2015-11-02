@@ -19,8 +19,12 @@ export default RESTAdapter.extend({
         }
     }),
 
+    pathForType(modelName) {
+        return modelName.replace('echonest-', '');
+    },
+
     buildURL(modelName, id, snapshot, requestType, query) {
-        let url = this._super.apply(this, arguments);
+        const url = this._super.apply(this, arguments);
         if (isPresent(query) && isPresent(query.method)) {
             const method = query.method;
             delete query.method;

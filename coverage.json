@@ -1,17 +1,17 @@
 {
   "stats": {
-    "suites": 87,
-    "tests": 101,
-    "passes": 101,
+    "suites": 90,
+    "tests": 106,
+    "passes": 106,
     "pending": 0,
     "failures": 0,
-    "start": "2015-10-30T07:42:49.631Z",
-    "end": "2015-10-30T07:42:51.142Z"
+    "start": "2015-11-01T09:13:45.633Z",
+    "end": "2015-11-01T09:13:47.256Z"
   },
   "coverage": {
     "total": {
-      "statementsTotal": 127,
-      "statementsCovered": 127,
+      "statementsTotal": 129,
+      "statementsCovered": 129,
       "percentage": 100
     },
     "files": [
@@ -23,8 +23,8 @@
       },
       {
         "name": "ember-data-echonest/adapters/echonest",
-        "statementsTotal": 28,
-        "statementsCovered": 28,
+        "statementsTotal": 29,
+        "statementsCovered": 29,
         "percentage": 100
       },
       {
@@ -41,20 +41,20 @@
       },
       {
         "name": "ember-data-echonest/adapters/echonest-genre",
-        "statementsTotal": 4,
-        "statementsCovered": 4,
+        "statementsTotal": 3,
+        "statementsCovered": 3,
         "percentage": 100
       },
       {
         "name": "ember-data-echonest/adapters/echonest-song",
-        "statementsTotal": 4,
-        "statementsCovered": 4,
+        "statementsTotal": 7,
+        "statementsCovered": 7,
         "percentage": 100
       },
       {
         "name": "ember-data-echonest/adapters/echonest-track",
-        "statementsTotal": 4,
-        "statementsCovered": 4,
+        "statementsTotal": 3,
+        "statementsCovered": 3,
         "percentage": 100
       },
       {

@@ -561,7 +561,105 @@ _Currently Unsupported_
 
 ### Playlisting
 
-_Currently Unsupported_
+The Echo Nest API can be used to create playlists on the fly. To access it, simply query for a list of songs
+using the various `playlist` methods.
+
+##### Buckets
+
+* `id:catalog-name`
+* `tracks`
+
+#### Basic
+
+```javascript
+this.store.query('echonest-song', {
+    artist: 'Eminem',
+    method: 'playlist/basic'
+})
+```
+
+A number of different parameters can be used to seed the playlist: `artist_id`, `artist`, `song_id`, `genre`, `track_id`. 
+Multiples of each are allowed, but only a maximum of five across all seed parameters.
+
+*artist_id*: ID(s) of seed artist(s)
+
+```javascript
+this.store.query('echonest-song', {
+    artist_id: 'ARH6W4X1187B99274F',
+    method: 'playlist/basic'
+})
+```
+
+*artist*: Name(s) of seed artist(s)
+
+```javascript
+this.store.query('echonest-song', {
+    artist: 'Mariah Carey',
+    method: 'playlist/basic'
+})
+```
+
+*song_id*: ID(s) of seed song(s)
+
+```javascript
+this.store.query('echonest-song', {
+    song_id: 'SOCZMFK12AC468668F',
+    method: 'playlist/basic'
+})
+```
+
+*genre*: Seed genre(s)
+
+```javascript
+this.store.query('echonest-song', {
+    genre: 'rock',
+    method: 'playlist/basic'
+})
+```
+
+*track_id*: ID(s) of seed track(s)
+
+```javascript
+this.store.query('echonest-song', {
+    track_id: 'TRTLKZV12E5AC92E11',
+    method: 'playlist/basic'
+})
+```
+
+*type*: The type of playlist to be generated _(artist-radio, song-radio , genre-radio, Default: artist-radio)_
+
+* `artist-radio` - plays songs for the given artists and similar artists
+* `song-radio` - plays songs similar to the song specified.
+* `genre-radio` - plays songs from artists matching the given genre
+
+```javascript
+this.store.query('echonest-song', {
+    type: 'genre-radio',
+    genre: 'rock',
+    method: 'playlist/basic'
+})
+```
+
+*results*: Desired number of songs in the playlist _(0-100, Default: 15)_
+
+```javascript
+this.store.query('echonest-song', {
+    artist: 'Eminem',
+    method: 'playlist/basic',
+    results: 50
+})
+```
+
+*limited_interactivity*: Set rules for the playlist to conform to _(true, false, stylea, styleb, Default: false)_
+
+When the limited_interactivity parameter is set to true, the playlist will conform to the following rules:
+* no more than 2 songs in a row from the same album
+* no more than 3 songs from an album in a 3 hour period
+* no more than 3 different songs in a row by the same artist
+* no more than 4 songs by the same artist in a 3 hour period
+If limited_interactivity is set to true, skipped songs are not considered to have been played for 
+limited interactivity conformance purposes. If limited_interactivity is set to `styleb`, skipped 
+songs are considered to have been played for limited interactivity purposes.
 
 ### Taste Profile
 
