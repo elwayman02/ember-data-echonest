@@ -36,7 +36,18 @@ to see how I've injected the key.
 The addon exposes a number of models, adapters, and serializers you can use to access data from the
 [Echo Nest API](http://developer.echonest.com/docs/v4/index.html). If a particular API is not supported, please
 review our [issue list](https://github.com/elwayman02/ember-data-echonest/issues) and create a new one if it has
-not yet been requested. Contributions especially welcome, as well!
+not yet been requested. Contributions especially welcome!
+
+If you have not already, update your application to include the [BabelJS Polyfill](https://github.com/babel/ember-cli-babel#polyfill) for new ES6 features such as `includes`:
+
+```javascript
+//ember-cli-build.js
+new EmberApp(defaults, {
+    babel: {
+      includePolyfill: true
+    }
+});
+```
 
 #### Methods
 
