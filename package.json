@@ -37,7 +37,7 @@
     "ember-cli-inject-live-reload": "^1.3.1",
     "ember-cli-qunit": "^1.0.1",
     "ember-cli-release": "0.2.8",
-    "ember-cli-sass": "5.0.1",
+    "ember-cli-sass": "5.0.2",
     "ember-cli-sri": "^1.0.3",
     "ember-cli-uglify": "^1.2.0",
     "ember-cpm": "2.0.0",
