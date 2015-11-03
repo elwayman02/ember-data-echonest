@@ -45,6 +45,15 @@ table {
     td {
         padding: 5px;
 
+        &.blogTitle {
+            min-width: 200px;
+        }
+
+        &.blogUrl {
+            max-width: 400px;
+            word-wrap: break-word;
+        }
+
         ul {
             margin: 0;
             padding: 0;
