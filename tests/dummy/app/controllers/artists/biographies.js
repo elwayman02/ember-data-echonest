@@ -3,18 +3,18 @@ import Ember from 'ember';
 const { Controller, isPresent } = Ember;
 
 export default Controller.extend({
-    artist: null,
+    biographies: [],
     keyword: '',
 
     actions: {
         search(name) {
             name = name || this.get('keyword');
             if (isPresent(name)) {
-                this.store.queryRecord('echonest-artist', {
+                this.store.query('echonest-biography', {
                     name,
-                    method: 'familiarity'
-                }).then((artist) => {
-                    this.set('artist', artist);
+                    method: 'biographies'
+                }).then((biographies) => {
+                    this.set('biographies', biographies);
                 });
             }
         }

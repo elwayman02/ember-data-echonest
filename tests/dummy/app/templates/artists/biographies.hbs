@@ -1,16 +1,25 @@
-<table>
-  <tr>
-    <th>Bio</th>
-    <th>Source</th>
-    <th>Source URL</th>
-    <th>License Type</th>
-  </tr>
-  {{#each model as |bio|}}
-    <tr>
-      <td>{{bio.text}}</td>
-      <td>{{bio.site}}</td>
-      <td>{{bio.url}}</td>
-      <td>{{bio.license.type}}</td>
-    </tr>
-  {{/each}}
-</table>
+<div class="searchContainer">
+    {{input
+    enter='search'
+    placeholder='Lookup an Artist...'
+    value=keyword}}
+    <button {{action 'search' keyword}}>Search</button>
+</div>
+{{#if biographies.length}}
+    <table>
+      <tr>
+        <th>Bio</th>
+        <th>Source</th>
+        <th>Source URL</th>
+        <th>License Type</th>
+      </tr>
+      {{#each biographies as |bio|}}
+        <tr>
+          <td>{{bio.text}}</td>
+          <td>{{bio.site}}</td>
+          <td>{{bio.url}}</td>
+          <td>{{bio.license.type}}</td>
+        </tr>
+      {{/each}}
+    </table>
+{{/if}}

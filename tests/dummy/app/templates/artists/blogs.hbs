@@ -1,18 +1,27 @@
-<table>
-  <tr>
-    <th>Blog Title</th>
-    <th>Source URL</th>
-    <th>Blog Content</th>
-    <th>Date Found</th>
-    <th>Date Posted</th>
-  </tr>
-  {{#each model as |blog|}}
-    <tr>
-      <td>{{blog.name}}</td>
-      <td>{{blog.url}}</td>
-      <td>{{blog.summary}}</td>
-      <td>{{blog.dateFound}}</td>
-      <td>{{blog.datePosted}}</td>
-    </tr>
-  {{/each}}
-</table>
+<div class="searchContainer">
+    {{input
+    enter='search'
+    placeholder='Lookup an Artist...'
+    value=keyword}}
+    <button {{action 'search' keyword}}>Search</button>
+</div>
+{{#if blogs.length}}
+    <table>
+        <tr>
+            <th>Blog Title</th>
+            <th>Source URL</th>
+            <th>Blog Content</th>
+            <th>Date Found</th>
+            <th>Date Posted</th>
+        </tr>
+        {{#each blogs as |blog|}}
+            <tr>
+                <td class="blogTitle">{{blog.name}}</td>
+                <td class="blogUrl">{{blog.url}}</td>
+                <td>{{blog.summary}}</td>
+                <td>{{blog.dateFound}}</td>
+                <td>{{blog.datePosted}}</td>
+            </tr>
+        {{/each}}
+    </table>
+{{/if}}
