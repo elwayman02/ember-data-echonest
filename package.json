@@ -45,7 +45,7 @@
     "ember-disable-prototype-extensions": "^1.0.0",
     "ember-disable-proxy-controllers": "^1.0.0",
     "ember-export-application-global": "^1.0.5",
-    "ember-paper": "0.2.8",
+    "ember-paper": "0.2.10",
     "ember-power-select": "0.3.3",
     "ember-resolver": "^2.0.2",
     "ember-sinon": "0.3.0",
