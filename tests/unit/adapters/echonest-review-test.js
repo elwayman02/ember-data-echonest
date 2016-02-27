@@ -2,7 +2,7 @@ import { moduleFor, test } from 'ember-qunit';
 
 let adapter;
 
-moduleFor('adapter:echonest-news', 'Unit | Adapter | echonest news', {
+moduleFor('adapter:echonest-review', 'Unit | Adapter | echonest review', {
     setup() {
         adapter = this.subject({
             ENV: {

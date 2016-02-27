@@ -11,7 +11,7 @@ export default Model.extend({
     doc_counts: attr(),
     familiarity: attr('number'),
     familiarityRank: attr('number'),
-    genre: attr(), // echonest-genre
+    genres: attr(), // echonest-genre
     hotttnesss: attr('number'),
     hotttnesssRank: attr('number'),
     images: attr(),
