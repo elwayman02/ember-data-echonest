@@ -1,3 +1,5 @@
 import ArtistAdapter from './echonest-artist';
 
-export default ArtistAdapter.extend();
+export default ArtistAdapter.extend({
+    method: 'biographies'
+});

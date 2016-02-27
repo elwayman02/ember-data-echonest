@@ -1,0 +1,22 @@
+<div class="header">
+  <h3>Descriptions</h3>
+</div>
+<div class="searchContainer">
+  Type:
+  <div class="radioContainer">
+      {{#paper-radio value='style' selected=type}}Style{{/paper-radio}}
+      {{#paper-radio value='mood' selected=type}}Mood{{/paper-radio}}
+  </div>
+</div>
+{{#if descriptions.length}}
+  <table>
+    <tr>
+      <th>Description</th>
+    </tr>
+    {{#each descriptions as |description|}}
+      <tr>
+        <td class="description">{{description.name}}</td>
+      </tr>
+    {{/each}}
+  </table>
+{{/if}}

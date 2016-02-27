@@ -2,7 +2,7 @@ import { moduleFor, test } from 'ember-qunit';
 
 let adapter;
 
-moduleFor('adapter:echonest-biography', 'Unit | Adapter | echonest biography', {
+moduleFor('adapter:echonest-description', 'Unit | Adapter | echonest description', {
     setup() {
         adapter = this.subject({
             ENV: {
@@ -13,10 +13,9 @@ moduleFor('adapter:echonest-biography', 'Unit | Adapter | echonest biography', {
 });
 
 test('method', function (assert) {
-    assert.equal(adapter.method, 'biographies', 'default method is set');
+    assert.equal(adapter.method, 'list_terms', 'default method is set');
 });
 
-
 test('pathForType', function (assert) {
-    assert.equal(adapter.pathForType('echonest-biography'), 'artist', 'artist is returned from pathForType');
+    assert.equal(adapter.pathForType('echonest-description'), 'artist', 'artist is returned from pathForType');
 });

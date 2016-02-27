@@ -9,6 +9,7 @@ export default RESTAdapter.extend({
     namespace: 'api/v4',
     apiKey: null,
     dataType: 'jsonp',
+    method: null,
 
     initApiKey: on('init', function () {
         const ENV = this.container.lookupFactory('config:environment');
@@ -25,10 +26,13 @@ export default RESTAdapter.extend({
 
     buildURL(modelName, id, snapshot, requestType, query) {
         const url = this._super.apply(this, arguments);
-        if (isPresent(query) && isPresent(query.method)) {
-            const method = query.method;
-            delete query.method;
-            return `${url}/${method}`;
+        if (isPresent(query)) {
+            query.method = query.method || this.get('method');
+            if (isPresent(query.method)) {
+                const method = query.method;
+                delete query.method;
+                return `${url}/${method}`;
+            }
         }
         return url;
     },

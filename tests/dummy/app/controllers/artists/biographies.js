@@ -10,10 +10,7 @@ export default Controller.extend({
         search(name) {
             name = name || this.get('keyword');
             if (isPresent(name)) {
-                this.store.query('echonest-biography', {
-                    name,
-                    method: 'biographies'
-                }).then((biographies) => {
+                this.store.query('echonest-biography', { name }).then((biographies) => {
                     this.set('biographies', biographies);
                 });
             }
