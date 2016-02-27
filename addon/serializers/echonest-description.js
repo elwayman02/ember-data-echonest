@@ -1,5 +1,9 @@
 import EchonestSerializer from 'ember-data-echonest/serializers/echonest';
 
 export default EchonestSerializer.extend({
-    modelKey: 'blog'
+    modelKey: 'description',
+
+    pluralizeKey() {
+        return 'terms';
+    }
 });

@@ -12,6 +12,10 @@ moduleFor('adapter:echonest-blog', 'Unit | Adapter | echonest blog', {
     }
 });
 
+test('method', function (assert) {
+    assert.equal(adapter.method, 'blogs', 'default method is set');
+});
+
 test('pathForType', function (assert) {
     assert.equal(adapter.pathForType('echonest-blog'), 'artist', 'artist is returned from pathForType');
 });

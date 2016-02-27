@@ -111,7 +111,6 @@ Returns a list of artist biographies
 
 ```javascript
 this.store.query('echonest-biography', {
-    method: 'biographies',
     name: 'Weezer'
 });
 ```
@@ -122,7 +121,6 @@ Returns a list of blog articles related to an artist
 
 ```javascript
 return this.store.query('echonest-blog', {
-    method: 'blogs',
     name: 'Deadmau5'
 });
 ```
@@ -180,10 +178,6 @@ return this.store.queryRecord('echonest-artist', {
 });
 ```
 
-#### List Terms
-
-_Currently Unsupported_
-
 #### Profile
 
 Returns basic profile information for an artist
@@ -201,6 +195,21 @@ An artist `name` or `id` can be provided. For example:
 return this.store.queryRecord('echonest-artist', {
     method: 'profile',
     id: 'ARH6W4X1187B99274F'
+});
+```
+
+### Description
+
+[Description Docs](http://developer.echonest.com/docs/v4/artist.html#list-terms)
+
+Returns a list of the best descriptive terms to use with search APIs. Allows two values for `type`:
+
+* `mood` - A mood or feeling associated with the music (ie 'aggressive', 'dreamy', or 'epic')
+* `style` - A genre or type of music (ie 'rock', 'classical', or '90s')
+
+```javascript
+return this.store.query('echonest-description', {
+    type: 'style'
 });
 ```
 
