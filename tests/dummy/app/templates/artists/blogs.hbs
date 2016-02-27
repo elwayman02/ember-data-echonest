@@ -5,7 +5,7 @@
     value=keyword}}
     <button {{action 'search' keyword}}>Search</button>
 </div>
-{{#if blogs.length}}
+{{#if results.length}}
     <table>
         <tr>
             <th>Blog Title</th>
@@ -14,7 +14,7 @@
             <th>Date Found</th>
             <th>Date Posted</th>
         </tr>
-        {{#each blogs as |blog|}}
+        {{#each results as |blog|}}
             <tr>
                 <td class="blogTitle">{{blog.name}}</td>
                 <td class="blogUrl">{{blog.url}}</td>

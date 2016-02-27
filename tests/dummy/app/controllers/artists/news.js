@@ -1,5 +1,9 @@
 import KeywordSearchController from '../keyword-search';
 
 export default KeywordSearchController.extend({
-    modelKey: 'biography'
+    modelKey: 'news',
+    query: {
+        high_relevance: true,
+        results: 100
+    }
 });

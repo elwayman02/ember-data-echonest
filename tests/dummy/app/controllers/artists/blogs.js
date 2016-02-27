@@ -1,19 +1,5 @@
-import Ember from 'ember';
+import KeywordSearchController from '../keyword-search';
 
-const { Controller, isPresent } = Ember;
-
-export default Controller.extend({
-    blogs: [],
-    keyword: '',
-
-    actions: {
-        search(name) {
-            name = name || this.get('keyword');
-            if (isPresent(name)) {
-                this.store.query('echonest-blog', { name }).then((blogs) => {
-                    this.set('blogs', blogs);
-                });
-            }
-        }
-    }
+export default KeywordSearchController.extend({
+    modelKey: 'blog'
 });

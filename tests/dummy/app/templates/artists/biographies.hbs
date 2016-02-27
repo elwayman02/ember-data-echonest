@@ -5,7 +5,7 @@
     value=keyword}}
     <button {{action 'search' keyword}}>Search</button>
 </div>
-{{#if biographies.length}}
+{{#if results.length}}
     <table>
       <tr>
         <th>Bio</th>
@@ -13,7 +13,7 @@
         <th>Source URL</th>
         <th>License Type</th>
       </tr>
-      {{#each biographies as |bio|}}
+      {{#each results as |bio|}}
         <tr>
           <td>{{bio.text}}</td>
           <td>{{bio.site}}</td>
