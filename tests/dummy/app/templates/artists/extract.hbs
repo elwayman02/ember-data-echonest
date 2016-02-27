@@ -1,0 +1,8 @@
+<div class="searchContainer">
+    {{textarea
+    enter='extract'
+    placeholder='Enter text with artist names within...'
+    value=text}}
+  <button {{action 'search' text}}>Extract</button>
+</div>
+{{artist-table artists=artists}}

@@ -125,6 +125,52 @@ this.store.query('echonest-blog', {
 });
 ```
 
+#### Extract
+
+Extract artist names from text
+
+```javascript
+this.store.query('echonest-artist', {
+    method: 'extract'
+    text: 'I love Taylor Swift and Kanye West both, why do they keep fighting? I wish they would collab with Eminem!'
+});
+```
+
+##### Options
+
+*sort*: Categories to sort by - _familiarity-asc, hotttnesss-asc, familiarity-desc, hotttnesss-desc, artist_start_year-asc, artist_start_year-desc, artist_end_year-asc, artist_end_year-desc_
+
+```javascript
+this.store.query('echonest-artist', {
+    method: 'extract',
+    text: 'I love Taylor Swift and Kanye West both, why do they keep fighting? I wish they would collab with Eminem!',
+    sort: 'hotttnesss-desc'
+});
+```
+
+*max_familiarity*: The maximum familiarity for artists returned from the query _(0-1, Default: 1)_
+*min_familiarity*: The minimum familiarity for artists returned from the query _(0-1, Default: 0)_
+*max_hotttnesss*: The maximum hotttnesss for artists returned from the query _(0-1, Default: 1)_
+*min_hotttnesss*: The minimum hotttnesss for artists returned from the query _(0-1, Default: 0)_
+
+```javascript
+this.store.query('echonest-artist', {
+    method: 'extract',
+    text: 'I love Taylor Swift and Kanye West both, why do they keep fighting? I wish they would collab with Eminem!',
+    min_familiarity: .7
+});
+```
+
+*results*: Number of desired results _(0-100, Default: 15)_
+
+```javascript
+this.store.query('echonest-artist', {
+    method: 'extract',
+    text: 'I love Taylor Swift and Kanye West both, why do they keep fighting? I wish they would collab with Eminem!',
+    results: 75
+});
+```
+
 #### Familiarity
 
 Returns a numerical estimation of how familiar an artist is currently
@@ -216,8 +262,6 @@ An artists `id` can be provided instead of `name`, as shown for other APIs.
 *results*: Number of desired results _(0-100, Default: 15)_
 *start*: Desired index of the first result returned _(0+, Default: 0)_
 
-Note: The docs indicate 0/15/30 as the only accepted indices, but any value seems to be allowed.
-
 ```javascript
 this.store.queryRecord('echonest-news', {
     name: 'Taylor Swift',
@@ -243,8 +287,6 @@ An artists `id` can be provided instead of `name`, as shown for other APIs.
 
 *results*: Number of desired results _(0-100, Default: 15)_
 *start*: Desired index of the first result returned _(0+, Default: 0)_
-
-Note: The docs indicate 0/15/30 as the only accepted indices, but any value seems to be allowed.
 
 ```javascript
 this.store.queryRecord('echonest-reviews', {
@@ -379,12 +421,10 @@ this.store.query('echonest-artist', {
 *results*: Number of desired results _(0-100, Default: 15)_
 *start*: Desired index of the first result returned _(0+, Default: 0)_
 
-Note: The docs indicate 0/15/30 as the only accepted indices, but any value seems to be allowed.
-
 ```javascript
 this.store.query('echonest-artist', {
     name: 'Taylor',
-    method: 'search'
+    method: 'search',
     results: 75,
     start: 10
 });
@@ -483,8 +523,6 @@ but any value is respected.
 
 *Start*: Desired index of the first result returned _(0+, Default: 0)_
 
-Note: The docs indicate 0/15/30 as the only accepted indices, but again, any value seems to be allowed.
-
 ```javascript
 this.store.query('echonest-genre', {
     name: 'rock',
@@ -521,8 +559,6 @@ Note: The [Similar API Docs](http://developer.echonest.com/docs/v4/genre.html#si
 but any value is respected.
 
 *start*: Desired index of the first result returned _(0+, Default: 0)_
-
-Note: The docs indicate 0/15/30 as the only accepted indices, but again, any value seems to be allowed.
 
 ```javascript
 this.store.query('echonest-genre', {
@@ -749,8 +785,6 @@ this.store.query('echonest-song', {
 ```
 
 *start*: Desired index of the first result returned _(0+, Default: 0)_
-
-Note: The docs indicate 0/15/30 as the only accepted indices, but any value seems to be allowed.
 
 ```javascript
 this.store.query('echonest-song', {
