@@ -120,7 +120,7 @@ this.store.query('echonest-biography', {
 Returns a list of blog articles related to an artist
 
 ```javascript
-return this.store.query('echonest-blog', {
+this.store.query('echonest-blog', {
     name: 'Deadmau5'
 });
 ```
@@ -130,7 +130,7 @@ return this.store.query('echonest-blog', {
 Returns a numerical estimation of how familiar an artist is currently
 
 ```javascript
-return this.store.queryRecord('echonest-artist', {
+this.store.queryRecord('echonest-artist', {
     method: 'familiarity',
     name: 'Radiohead'
 });
@@ -139,7 +139,7 @@ return this.store.queryRecord('echonest-artist', {
 An artist `name` or `id` can be provided. For example:
 
 ```javascript
-return this.store.queryRecord('echonest-artist', {
+this.store.queryRecord('echonest-artist', {
     method: 'familiarity',
     id: 'ARH6W4X1187B99274F'
 });
@@ -150,7 +150,7 @@ return this.store.queryRecord('echonest-artist', {
 Returns a numerical description of how hottt an artist is currently
 
 ```javascript
-return this.store.queryRecord('echonest-artist', {
+this.store.queryRecord('echonest-artist', {
     method: 'hotttnesss',
     name: 'Taylor Swift'
 });
@@ -159,7 +159,7 @@ return this.store.queryRecord('echonest-artist', {
 An artist `name` or `id` can be provided. For example:
 
 ```javascript
-return this.store.queryRecord('echonest-artist', {
+this.store.queryRecord('echonest-artist', {
     method: 'hotttnesss',
     id: 'ARH6W4X1187B99274F'
 });
@@ -171,7 +171,7 @@ Note: As of yet we have been unable to ascertain the usefulness of this paramete
 All tests of the API have returned the same results for an artist regardless of type.
 
 ```javascript
-return this.store.queryRecord('echonest-artist', {
+this.store.queryRecord('echonest-artist', {
     method: 'hotttnesss',
     name: 'Taylor Swift',
     type: 'mainstream'
@@ -183,7 +183,7 @@ return this.store.queryRecord('echonest-artist', {
 Returns basic profile information for an artist
 
 ```javascript
-return this.store.queryRecord('echonest-artist', {
+this.store.queryRecord('echonest-artist', {
     method: 'profile',
     name: 'Taylor Swift'
 });
@@ -192,7 +192,7 @@ return this.store.queryRecord('echonest-artist', {
 An artist `name` or `id` can be provided. For example:
 
 ```javascript
-return this.store.queryRecord('echonest-artist', {
+this.store.queryRecord('echonest-artist', {
     method: 'profile',
     id: 'ARH6W4X1187B99274F'
 });
@@ -203,7 +203,7 @@ return this.store.queryRecord('echonest-artist', {
 Returns a list of news articles related to an artist
 
 ```javascript
-return this.store.queryRecord('echonest-news', {
+this.store.queryRecord('echonest-news', {
     name: 'Taylor Swift'
 });
 ```
@@ -219,7 +219,7 @@ An artists `id` can be provided instead of `name`, as shown for other APIs.
 Note: The docs indicate 0/15/30 as the only accepted indices, but any value seems to be allowed.
 
 ```javascript
-return this.store.queryRecord('echonest-news', {
+this.store.queryRecord('echonest-news', {
     name: 'Taylor Swift',
     high_relevance: true,
     results: 50,
@@ -232,7 +232,7 @@ return this.store.queryRecord('echonest-news', {
 Returns a list of album reviews related to an artist
 
 ```javascript
-return this.store.queryRecord('echonest-reviews', {
+this.store.queryRecord('echonest-reviews', {
     name: 'Taylor Swift'
 });
 ```
@@ -247,12 +247,149 @@ An artists `id` can be provided instead of `name`, as shown for other APIs.
 Note: The docs indicate 0/15/30 as the only accepted indices, but any value seems to be allowed.
 
 ```javascript
-return this.store.queryRecord('echonest-reviews', {
+this.store.queryRecord('echonest-reviews', {
     name: 'Taylor Swift',
     results: 75,
     start: 10
 });
 ```
+
+#### Search
+
+Returns a list of artists matching the provided `name` query
+
+```javascript
+this.store.query('echonest-artist', {
+    name: 'Taylor Swift',
+    method: 'search'
+});
+```
+
+##### Options
+
+*fuzzy_match*: Perform a fuzzy search on the query _(Default: false)_
+
+```javascript
+this.store.query('echonest-artist', {
+    name: 'Taylor',
+    method: 'search',
+    fuzzy_match: true
+});
+```
+
+*sort*: Categories to sort by - _familiarity-asc, hotttnesss-asc, familiarity-desc, hotttnesss-desc, artist_start_year-asc, artist_start_year-desc, artist_end_year-asc, artist_end_year-desc_
+
+```javascript
+this.store.query('echonest-artist', {
+    name: 'Taylor',
+    method: 'search',
+    sort: 'hotttnesss-desc'
+});
+```
+
+*description*: Match artists by `description`, such as `style` or `mood` (supports multiple)
+
+```javascript
+this.store.query('echonest-artist', {
+    name: 'Taylor',
+    method: 'search',
+    description: ['romantic', '00s']
+});
+```
+
+*style*: Match artists by `style` (supports multiple)
+
+```javascript
+this.store.query('echonest-artist', {
+    name: 'Taylor',
+    method: 'search',
+    style: ['country pop', '00s']
+});
+```
+
+*mood*: Match artists by `mood` (supports multiple)
+
+```javascript
+this.store.query('echonest-artist', {
+    name: 'Taylor',
+    method: 'search',
+    mood: ['romantic', 'party music']
+});
+```
+
+*rank_type*: For matching by `description`, `style`, or `mood`, 
+match by query relevance or artist familiarity rank _(Default: relevance)_
+
+```javascript
+this.store.query('echonest-artist', {
+    name: 'Taylor',
+    method: 'search',
+    mood: ['romantic'],
+    rank_type: 'familiarity'
+});
+```
+
+*genre*: Match artists by `genre` (supports multiple)
+
+```javascript
+this.store.query('echonest-artist', {
+    name: 'Taylor',
+    method: 'search',
+    genre: ['country pop', 'bluegrass']
+});
+```
+
+*artist_location*: A location of interest in relation to the `artist` query
+
+Note: Location names can _optionally_ be qualified with a type specifier of `city`, `region` or `country`.
+
+```javascript
+this.store.query('echonest-artist', {
+    name: 'Taylor',
+    method: 'search',
+    artist_location: 'city:Los Angeles+CA'
+});
+```
+
+*max_familiarity*: The maximum familiarity for artists returned from the query _(0-1, Default: 1)_
+*min_familiarity*: The minimum familiarity for artists returned from the query _(0-1, Default: 0)_
+*max_hotttnesss*: The maximum hotttnesss for artists returned from the query _(0-1, Default: 1)_
+*min_hotttnesss*: The minimum hotttnesss for artists returned from the query _(0-1, Default: 0)_
+
+```javascript
+this.store.query('echonest-artist', {
+    name: 'Taylor',
+    method: 'search',
+    min_familiarity: .7
+});
+```
+
+*artist_start_year_before*: Limit to artists whose first active year is before the provided year
+*artist_start_year_after*: Limit to artists whose first active year is after the provided year
+*artist_end_year_before*: Limit to artists whose last active year is before the provided year
+*artist_end_year_after*: Limit to artists whose last active year is after the provided year
+
+```javascript
+this.store.query('echonest-artist', {
+    name: 'Taylor',
+    method: 'search',
+    artist_start_year_before: 2000
+});
+
+*results*: Number of desired results _(0-100, Default: 15)_
+*start*: Desired index of the first result returned _(0+, Default: 0)_
+
+Note: The docs indicate 0/15/30 as the only accepted indices, but any value seems to be allowed.
+
+```javascript
+this.store.query('echonest-artist', {
+    name: 'Taylor',
+    method: 'search'
+    results: 75,
+    start: 10
+});
+```
+
 ### Description
 
 [Description Docs](http://developer.echonest.com/docs/v4/artist.html#list-terms)
@@ -263,7 +400,7 @@ Returns a list of the best descriptive terms to use with search APIs. Allows two
 * `style` - A genre or type of music (ie 'rock', 'classical', or '90s')
 
 ```javascript
-return this.store.query('echonest-description', {
+this.store.query('echonest-description', {
     type: 'style'
 });
 ```
