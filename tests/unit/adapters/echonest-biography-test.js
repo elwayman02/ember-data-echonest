@@ -13,7 +13,7 @@ moduleFor('adapter:echonest-biography', 'Unit | Adapter | echonest biography', {
 });
 
 test('method', function (assert) {
-    assert.equal(adapter.method, 'biographies', 'default method is set');
+    assert.equal(adapter.get('method'), 'biographies', 'default method is set');
 });
 
 

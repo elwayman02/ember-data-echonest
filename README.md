@@ -227,6 +227,32 @@ return this.store.queryRecord('echonest-news', {
 });
 ```
 
+#### Reviews
+
+Returns a list of album reviews related to an artist
+
+```javascript
+return this.store.queryRecord('echonest-reviews', {
+    name: 'Taylor Swift'
+});
+```
+
+An artists `id` can be provided instead of `name`, as shown for other APIs.
+
+##### Options
+
+*results*: Number of desired results _(0-100, Default: 15)_
+*start*: Desired index of the first result returned _(0+, Default: 0)_
+
+Note: The docs indicate 0/15/30 as the only accepted indices, but any value seems to be allowed.
+
+```javascript
+return this.store.queryRecord('echonest-reviews', {
+    name: 'Taylor Swift',
+    results: 75,
+    start: 10
+});
+```
 ### Description
 
 [Description Docs](http://developer.echonest.com/docs/v4/artist.html#list-terms)

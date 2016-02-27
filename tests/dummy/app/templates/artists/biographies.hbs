@@ -8,17 +8,15 @@
 {{#if results.length}}
     <table>
       <tr>
-        <th>Bio</th>
         <th>Source</th>
-        <th>Source URL</th>
         <th>License Type</th>
+        <th>Bio</th>
       </tr>
       {{#each results as |bio|}}
         <tr>
-          <td>{{bio.text}}</td>
-          <td>{{bio.site}}</td>
-          <td>{{bio.url}}</td>
+          <td><a href="{{bio.url}}" target="_blank">{{bio.site}}</a></td>
           <td>{{bio.license.type}}</td>
+          <td>{{bio.text}}</td>
         </tr>
       {{/each}}
     </table>
