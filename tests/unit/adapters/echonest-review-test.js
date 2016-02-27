@@ -13,9 +13,9 @@ moduleFor('adapter:echonest-news', 'Unit | Adapter | echonest news', {
 });
 
 test('method', function (assert) {
-    assert.equal(adapter.get('method'), 'news', 'default method is set');
+    assert.equal(adapter.get('method'), 'reviews', 'default method is set');
 });
 
 test('pathForType', function (assert) {
-    assert.equal(adapter.pathForType('echonest-news'), 'artist', 'artist is returned from pathForType');
+    assert.equal(adapter.pathForType('echonest-reviews'), 'artist', 'artist is returned from pathForType');
 });

@@ -13,7 +13,7 @@ moduleFor('adapter:echonest-blog', 'Unit | Adapter | echonest blog', {
 });
 
 test('method', function (assert) {
-    assert.equal(adapter.method, 'blogs', 'default method is set');
+    assert.equal(adapter.get('method'), 'blogs', 'default method is set');
 });
 
 test('pathForType', function (assert) {

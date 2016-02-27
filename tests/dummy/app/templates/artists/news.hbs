@@ -9,15 +9,13 @@
   <table>
     <tr>
       <th>News Title</th>
-      <th>Source URL</th>
       <th>News Summary</th>
       <th>Date Found</th>
       <th>Date Posted</th>
     </tr>
       {{#each results as |news|}}
         <tr>
-          <td class="blogTitle">{{news.name}}</td>
-          <td class="blogUrl">{{news.url}}</td>
+          <td class="articleTitle"><a href="{{news.url}}" target="_blank">{{news.name}}</a></td>
           <td>{{{news.summary}}}</td>
           <td>{{news.dateFound}}</td>
           <td>{{news.datePosted}}</td>

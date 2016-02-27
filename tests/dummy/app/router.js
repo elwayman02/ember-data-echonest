@@ -14,6 +14,7 @@ Router.map(function () {
         this.route('hotttnesss');
         this.route('profile');
         this.route('news');
+        this.route('reviews');
     });
     this.route('descriptions');
     this.route('genres', function () {

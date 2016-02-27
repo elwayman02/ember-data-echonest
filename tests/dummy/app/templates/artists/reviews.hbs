@@ -1,0 +1,33 @@
+<div class="searchContainer">
+    {{input
+    enter='search'
+    placeholder='Lookup an Artist...'
+    value=keyword}}
+  <button {{action 'search' keyword}}>Search</button>
+</div>
+{{#if results.length}}
+  <table>
+    <tr>
+      <th>Review Title</th>
+      <th>Review Image</th>
+      <th>Album Release</th>
+      <th>Review Content</th>
+      <th>Date Found</th>
+      <th>Date Posted</th>
+    </tr>
+      {{#each results as |review|}}
+        <tr>
+          <td class="articleTitle"><a href="{{review.url}}" target="_blank">{{review.name}}</a></td>
+          <td>
+              {{#if review.imageUrl}}
+                <img src="{{review.imageUrl}}" width="75" height="75"/>
+              {{/if}}
+          </td>
+          <td>{{review.release}}</td>
+          <td>{{review.summary}}</td>
+          <td>{{review.dateFound}}</td>
+          <td>{{review.datePosted}}</td>
+        </tr>
+      {{/each}}
+  </table>
+{{/if}}
