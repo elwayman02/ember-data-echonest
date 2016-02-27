@@ -198,6 +198,35 @@ return this.store.queryRecord('echonest-artist', {
 });
 ```
 
+#### News
+
+Returns a list of news articles related to an artist
+
+```javascript
+return this.store.queryRecord('echonest-news', {
+    name: 'Taylor Swift'
+});
+```
+
+An artists `id` can be provided instead of `name`, as shown for other APIs.
+
+##### Options
+
+*high_relevance*:  Whether to only show highly relevant articles or all news mentioning the artist _(Default: false)_
+*results*: Number of desired results _(0-100, Default: 15)_
+*start*: Desired index of the first result returned _(0+, Default: 0)_
+
+Note: The docs indicate 0/15/30 as the only accepted indices, but any value seems to be allowed.
+
+```javascript
+return this.store.queryRecord('echonest-news', {
+    name: 'Taylor Swift',
+    high_relevance: true,
+    results: 50,
+    start: 15
+});
+```
+
 ### Description
 
 [Description Docs](http://developer.echonest.com/docs/v4/artist.html#list-terms)
@@ -239,7 +268,7 @@ this.store.query('echonest-genre', {
 });
 ```
 
-##### Optional
+##### Options
 
 *Results*: Number of desired results _(0+, Default: 1000)_
 
@@ -273,9 +302,9 @@ this.store.query('echonest-genre', {
 });
 ```
 
-##### Optional
+##### Options
 
-*Results*: Number of desired results _(0+, Default: 15)_
+*results*: Number of desired results _(0+, Default: 15)_
 
 ```javascript
 this.store.query('echonest-genre', {
@@ -312,7 +341,7 @@ this.store.query('echonest-genre', {
 });
 ```
 
-##### Optional
+##### Options
 
 *results*: Number of desired results _(0+, Default: 15)_
 
@@ -413,7 +442,7 @@ this.store.query('echonest-song', {
 });
 ```
 
-##### Optional
+##### Options
 
 The parameters below can be used individually or in combination to refine the results:
 

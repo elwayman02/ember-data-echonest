@@ -8,12 +8,12 @@
       {{#paper-radio value='mood' selected=type}}Mood{{/paper-radio}}
   </div>
 </div>
-{{#if descriptions.length}}
+{{#if results.length}}
   <table>
     <tr>
       <th>Description</th>
     </tr>
-    {{#each descriptions as |description|}}
+    {{#each results as |description|}}
       <tr>
         <td class="description">{{description.name}}</td>
       </tr>
