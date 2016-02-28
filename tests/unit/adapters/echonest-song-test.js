@@ -18,7 +18,7 @@ test('pathForType', function (assert) {
 
 let name, id, snapshot, requestType, action, method, query;
 
-function setupBuildURLTests(noPlaylist) {
+function setupBuildURLTests(noPlaylist, artist) {
     name = 'foo';
     id = null;
     snapshot = {};
@@ -28,7 +28,11 @@ function setupBuildURLTests(noPlaylist) {
     query = { method };
 
     if (noPlaylist) {
-        query.method = 'baz';
+        query.method = method = 'baz';
+    }
+
+    if (artist) {
+        query.method = method = 'artist';
     }
 
     return adapter.buildURL(name, id, snapshot, requestType, query);
@@ -40,10 +44,16 @@ test('buildURL', function (assert) {
     assert.ok(result.includes(name), 'modelName is added to url');
 });
 
-
 test('buildURL uses playlist as modelName if passed as method', function (assert) {
     const result = setupBuildURLTests.call(this);
 
     assert.ok(result.includes(method), 'playlist & action added to url');
+    assert.ok(!result.includes(name), 'modelName is not added to url when playlist is passed');
+});
+
+test('buildURL uses artist as modelName if passed as method', function (assert) {
+    const result = setupBuildURLTests.call(this, true, true);
+
+    assert.ok(result.includes(`${method}/songs`), 'artist/songs added to url');
     assert.ok(!result.includes(name), 'modelName is not added to url when playlist is passed');
 });

@@ -29,6 +29,7 @@ Router.map(function () {
         this.route('base');
     });
     this.route('songs', function () {
+        this.route('artist');
         this.route('profile');
         this.route('search');
     });

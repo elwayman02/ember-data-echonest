@@ -1,0 +1,9 @@
+<div class="searchContainer">
+    {{input
+    enter='search'
+    placeholder='Lookup an Artist...'
+    value=keyword}}
+  <button {{action 'search' keyword}}>Search</button>
+</div>
+
+{{song-table songs=results showDetails=false showArtist=false}}

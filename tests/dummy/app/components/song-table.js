@@ -21,6 +21,8 @@ export default Component.extend({
 
     showDetails: true,
 
+    showArtist: true,
+
     allowSorting: true,
 
     useSort: computed('allowSorting', 'sortBy', function () {

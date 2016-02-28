@@ -574,6 +574,8 @@ this.store.query('echonest-genre', {
 
 ##### Buckets
 
+Song buckets are supported by the following methods: `profile`, `search`
+
 * `audio_summary` - returns summary audio parameters for the song
 * `artist_discovery` - returns the discovery score for the song's artist. This is a measure of how unexpectedly popular the artist is.
 * `artist_discovery_rank` - returns the discovery rank for the song's artist
@@ -598,6 +600,33 @@ this.store.query('echonest-song', {
     method: 'search',
     title: 'the lion sleeps tonight',
     bucket: ['song_currency', 'song_discovery', 'song_hotttnesss', 'song_type']
+});
+```
+
+#### Artist
+
+Returns a list of songs released by the provided artist
+
+```javascript
+this.store.query('echonest-song', {
+    method: 'artist',
+    name: 'Taylor Swift'
+});
+```
+
+Artist `id` can be used in place of `name`
+
+##### Options
+
+*results*: Number of desired results _(0-100, Default: 15)_
+*start*: Desired index of the first result returned _(0+, Default: 0)_
+
+```javascript
+this.store.query('echonest-song', {
+    method: 'artist',
+    name: 'Taylor Swift',
+    results: 100,
+    start: 15
 });
 ```
 

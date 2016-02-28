@@ -3,7 +3,9 @@
         <tr>
             <th {{action 'updateSortBy' 'index'}}>#</th>
             <th {{action 'updateSortBy' 'title'}}>Title</th>
-            <th {{action 'updateSortBy' 'artistName'}}>Artist</th>
+            {{#if showArtist}}
+                <th {{action 'updateSortBy' 'artistName'}}>Artist</th>
+            {{/if}}
             {{#if showDetails}}
                 <th>Type(s)</th>
                 <th {{action 'updateSortBy' 'songCurrency'}}>Currency</th>
@@ -15,7 +17,9 @@
             <tr>
                 <td>{{song.index}}</td>
                 <td>{{song.title}}</td>
-                <td>{{song.artistName}}</td>
+                {{#if showArtist}}
+                    <td>{{song.artistName}}</td>
+                {{/if}}
                 {{#if showDetails}}
                     <td>{{song.types}}</td>
                     <td>{{song.songCurrency}}</td>
