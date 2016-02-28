@@ -455,7 +455,11 @@ this.store.query('echonest-artist', {
 
 ### Description
 
-[Description Docs](http://developer.echonest.com/docs/v4/artist.html#list-terms)
+Descriptions of artists
+
+#### List
+
+[List Docs](http://developer.echonest.com/docs/v4/artist.html#list-terms)
 
 Returns a list of the best descriptive terms to use with search APIs. Allows two values for `type`:
 
@@ -465,6 +469,31 @@ Returns a list of the best descriptive terms to use with search APIs. Allows two
 ```javascript
 this.store.query('echonest-description', {
     type: 'style'
+});
+```
+
+#### Artist
+
+[Artist Description Docs](http://developer.echonest.com/docs/v4/artist.html#terms)
+
+Returns a list of the most relevant descriptions (along with their frequency and weight) for a given artist
+
+```javascript
+this.store.query('echonest-description', {
+    method: 'artist',
+    name: 'Taylor Swift'
+});
+```
+
+##### Options
+
+*sort*: Sort by weight or frequency _(Default: frequency)_
+
+```javascript
+this.store.query('echonest-description', {
+    method: 'artist',
+    name: 'Taylor Swift',
+    sort: 'weight'
 });
 ```
 

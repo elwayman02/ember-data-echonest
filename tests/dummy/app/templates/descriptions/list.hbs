@@ -1,0 +1,19 @@
+<div class="searchContainer">
+  Type:
+  <div class="radioContainer">
+      {{#paper-radio value='style' selected=type}}Style{{/paper-radio}}
+      {{#paper-radio value='mood' selected=type}}Mood{{/paper-radio}}
+  </div>
+</div>
+{{#if results.length}}
+  <table>
+    <tr>
+      <th>Description</th>
+    </tr>
+    {{#each results as |description|}}
+      <tr>
+        <td>{{description.name}}</td>
+      </tr>
+    {{/each}}
+  </table>
+{{/if}}

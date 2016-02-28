@@ -19,7 +19,10 @@ Router.map(function () {
         this.route('search');
         this.route('suggest');
     });
-    this.route('descriptions');
+    this.route('descriptions', function () {
+        this.route('list');
+        this.route('artist');
+    });
     this.route('genres', function () {
         this.route('list');
         this.route('profile');

@@ -1,22 +1,8 @@
 <div class="header">
   <h3>Descriptions</h3>
+
+    {{#link-to 'descriptions.list'}}<button>List</button>{{/link-to}}
+    {{#link-to 'descriptions.artist'}}<button>Artist</button>{{/link-to}}
 </div>
-<div class="searchContainer">
-  Type:
-  <div class="radioContainer">
-      {{#paper-radio value='style' selected=type}}Style{{/paper-radio}}
-      {{#paper-radio value='mood' selected=type}}Mood{{/paper-radio}}
-  </div>
-</div>
-{{#if results.length}}
-  <table>
-    <tr>
-      <th>Description</th>
-    </tr>
-    {{#each results as |description|}}
-      <tr>
-        <td>{{description.name}}</td>
-      </tr>
-    {{/each}}
-  </table>
-{{/if}}
+
+{{outlet}}

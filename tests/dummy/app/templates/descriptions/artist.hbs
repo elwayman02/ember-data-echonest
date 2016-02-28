@@ -1,0 +1,23 @@
+<div class="searchContainer">
+    {{input
+    enter='search'
+    placeholder='Lookup an Artist...'
+    value=keyword}}
+  <button {{action 'search' keyword}}>Search</button>
+</div>
+{{#if results.length}}
+  <table>
+    <tr>
+      <th>Description</th>
+      <th>Frequency</th>
+      <th>Weight</th>
+    </tr>
+      {{#each results as |description|}}
+        <tr>
+          <td>{{description.name}}</td>
+          <td>{{description.frequency}}</td>
+          <td>{{description.weight}}</td>
+        </tr>
+      {{/each}}
+  </table>
+{{/if}}
