@@ -1,0 +1,8 @@
+<div class="searchContainer">
+    {{input
+    enter='search'
+    placeholder='Enter a partial name...'
+    value=keyword}}
+  <button {{action 'search' keyword}}>Suggest</button>
+</div>
+{{artist-table artists=results}}

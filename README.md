@@ -430,6 +430,29 @@ this.store.query('echonest-artist', {
 });
 ```
 
+#### Suggest
+
+Suggest artist names based on a partial query
+
+```javascript
+this.store.query('echonest-artist', {
+    method: 'suggest',
+    name: 'Tay'
+});
+```
+
+##### Options 
+
+*results*: Number of desired results _(0-100, Default: 15)_
+
+```javascript
+this.store.query('echonest-artist', {
+    method: 'suggest',
+    name: 'Taylor',
+    results: 75
+});
+```
+
 ### Description
 
 [Description Docs](http://developer.echonest.com/docs/v4/artist.html#list-terms)
