@@ -9,6 +9,9 @@ module.exports = function (defaults) {
         },
         dotEnv: {
             clientAllowedKeys: ['ECHONEST_KEY']
+        },
+        SRI: {
+            enabled: false
         }
     });
 
