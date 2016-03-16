@@ -1,0 +1,16 @@
+<div class="searchContainer">
+    {{input
+    enter='search'
+    placeholder='Lookup an Artist...'
+    value=keyword}}
+  <button {{action 'search' keyword}}>Search</button>
+</div>
+{{#if results.length}}
+  <table>
+      {{#each results as |image|}}
+        <tr>
+          <img src="{{image.url}}" width="75" height="75"/>
+        </tr>
+      {{/each}}
+  </table>
+{{/if}}

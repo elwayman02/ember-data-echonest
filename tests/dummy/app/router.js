@@ -13,6 +13,7 @@ Router.map(function () {
         this.route('extract');
         this.route('familiarity');
         this.route('hotttnesss');
+        this.route('images');
         this.route('profile');
         this.route('news');
         this.route('reviews');

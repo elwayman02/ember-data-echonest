@@ -224,6 +224,16 @@ this.store.queryRecord('echonest-artist', {
 });
 ```
 
+#### Images
+
+Returns a list of images related to an artist
+
+```javascript
+this.store.query('echonest-image', {
+    name: 'Taylor Swift'
+});
+```
+
 #### Profile
 
 Returns basic profile information for an artist
