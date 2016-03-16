@@ -29,7 +29,7 @@
     "ember-ajax": "0.7.1",
     "ember-cli": "2.3.0",
     "ember-cli-app-version": "^1.0.0",
-    "ember-cli-blanket": "git@github.com:jschilli/ember-cli-blanket.git#wrapModules-iso-hijackingRequire",
+    "ember-cli-blanket": "~0.9.0",
     "ember-cli-dependency-checker": "^1.2.0",
     "ember-cli-dotenv": "git@github.com:fivetanley/ember-cli-dotenv.git#master",
     "ember-cli-github-pages": "0.0.8",
