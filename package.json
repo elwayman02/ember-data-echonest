@@ -43,7 +43,7 @@
     "ember-cli-uglify": "^1.2.0",
     "ember-cli-version-checker": "^1.1.6",
     "ember-cpm": "2.0.0",
-    "ember-data": "^2.3.0",
+    "ember-data": "^2.4.2",
     "ember-disable-prototype-extensions": "^1.1.0",
     "ember-disable-proxy-controllers": "^1.0.1",
     "ember-export-application-global": "^1.0.5",
