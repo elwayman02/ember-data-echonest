@@ -1,0 +1,11 @@
+<div class="searchContainer">
+    {{input
+    enter='search'
+    placeholder='Lookup an Artist...'
+    value=keyword}}
+  <button {{action 'search' keyword}}>Search</button>
+</div>
+<p>
+  Note: If no Twitter handle is shown, it was not found within the Echo Nest database. Hint: Try Ed Sheeran!
+</p>
+{{artist-table artist=results}}

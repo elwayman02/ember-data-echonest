@@ -26,7 +26,7 @@ export default Component.extend({
     }),
 
     setupColumns: on('init', function() {
-        ['familiarity', 'familiarityRank', 'hotttnesss', 'hotttnesssRank', 'years'].forEach((column) => {
+        ['familiarity', 'familiarityRank', 'hotttnesss', 'hotttnesssRank', 'twitter', 'years'].forEach((column) => {
             defineProperty(this, column, computed('artistList', function () {
                 return this.get('artistList').any(function (artist) {
                     return isPresent(artist.get(column));

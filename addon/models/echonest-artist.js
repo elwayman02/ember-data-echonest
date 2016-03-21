@@ -20,6 +20,7 @@ export default Model.extend({
     reviews: attr(), // echonest-reviews
     songs: attr(), // echonest-songs
     teams: attr(),
+    twitter: attr('string'),
     urls: attr(),
     video: attr(),
     yearsActive: attr()

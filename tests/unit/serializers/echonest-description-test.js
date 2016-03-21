@@ -13,6 +13,6 @@ test('modelKey', function (assert) {
     assert.equal(serializer.get('modelKey'), 'description', 'default modelKey is set');
 });
 
-test('pluralizeKey', function (assert) {
-    assert.equal(serializer.pluralizeKey('foo'), 'terms', 'overrides `pluralizeKey` to return proper key for payload');
+test('payloadKey', function (assert) {
+    assert.equal(serializer.payloadKey('foo'), 'terms', 'overrides `payloadKey` to return proper key for payload');
 });

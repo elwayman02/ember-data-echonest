@@ -10,9 +10,9 @@ moduleFor('serializer:echonest', 'Unit | Serializer | echonest', {
     }
 });
 
-test('pluralizeKey', function (assert) {
+test('payloadKey', function (assert) {
     const key = 'foo';
-    const result = serializer.pluralizeKey(key);
+    const result = serializer.payloadKey(key);
 
     assert.equal(result, `${key}s`, 'pluralizes key');
 });
@@ -92,7 +92,7 @@ test('normalizeResponse does nothing if no items', function (assert) {
     assert.equal(result, foo, 'returns result from _super');
 });
 
-test('normalizeResponse builds single response', function (assert) {
+test('normalizeResponse builds single response from model key', function (assert) {
     const result = setupNormalizeTests.call(this, true, 1);
 
     assert.ok(normalizeStub.calledOnce, '_normalizeResponse was called once');
@@ -106,7 +106,24 @@ test('normalizeResponse builds single response', function (assert) {
     assert.equal(result, foo, 'returns result from _super');
 });
 
-test('normalizeResponse builds response array', function (assert) {
+test('normalizeResponse builds single response from payload key', function (assert) {
+    this.stub(serializer, 'payloadKey', function () {
+        return 'item'; // simulate a singular payload key that matches the model key
+    });
+    const result = setupNormalizeTests.call(this, true, 1);
+
+    assert.ok(normalizeStub.calledOnce, '_normalizeResponse was called once');
+
+    const { args } = normalizeStub.firstCall;
+    assertNormalizeArguments(assert, args);
+
+    const [,,itemPayload] = args;
+    assert.equal(itemPayload[`echonest-${key}`], item, 'single item is returned');
+
+    assert.equal(result, foo, 'returns result from _super');
+});
+
+test('normalizeResponse builds response array from payload key', function (assert) {
     const result = setupNormalizeTests.call(this, true, 2);
 
     assert.ok(normalizeStub.calledOnce, '_normalizeResponse was called once');

@@ -19,6 +19,7 @@ Router.map(function () {
         this.route('reviews');
         this.route('search');
         this.route('suggest');
+        this.route('twitter');
     });
     this.route('descriptions', function () {
         this.route('artist');

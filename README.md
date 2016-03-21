@@ -464,6 +464,16 @@ this.store.query('echonest-artist', {
 });
 ```
 
+#### Twitter
+
+Retrieve an artist's Twitter handle
+
+```javascript
+this.store.queryRecord('echonest-twitter', {
+    name: 'Ed Sheeran'
+});
+```
+
 ### Description
 
 Descriptions of artists

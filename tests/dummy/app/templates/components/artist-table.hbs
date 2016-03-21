@@ -2,6 +2,9 @@
     <table>
         <tr>
             <th>Artist</th>
+            {{#if twitter}}
+                <th>Twitter</th>
+            {{/if}}
             {{#if familiarity}}
                 <th>Familiarity</th>
             {{/if}}
@@ -21,6 +24,9 @@
         {{#each artistList as |artist|}}
             <tr>
                 <td>{{artist.name}}</td>
+                {{#if artist.twitter}}
+                    <td>{{artist.twitter}}</td>
+                {{/if}}
                 {{#if artist.familiarity}}
                     <td>{{artist.familiarity}}</td>
                 {{/if}}

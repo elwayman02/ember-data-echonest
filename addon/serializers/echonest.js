@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import DS from 'ember-data';
 
-const { String: { pluralize, underscore }, isBlank, isPresent } = Ember;
+const { String: { pluralize, underscore }, isArray, isBlank, isPresent } = Ember;
 const { RESTSerializer } = DS;
 
 export default RESTSerializer.extend({
@@ -9,7 +9,7 @@ export default RESTSerializer.extend({
 
     removalList: [],
 
-    pluralizeKey(key) {
+    payloadKey(key) {
         return pluralize(key);
     },
 
@@ -27,18 +27,21 @@ export default RESTSerializer.extend({
 
     normalizeResponse(store, primaryModelClass, payload, id, requestType) {
         const key = this.get('modelKey');
-        const pluralKey = this.pluralizeKey(key);
+        const payloadKey = this.payloadKey(key);
         if (isPresent(key) && isPresent(payload.response)) {
-            if (isPresent(payload.response[pluralKey])) {
-                const items = payload.response[pluralKey].map((item, index) => {
-                    if (isBlank(item.id)) {
-                        item.id = index;
-                    }
+            let response = payload.response[payloadKey];
+            if (isPresent(response)) {
+                if (isArray(response)) {
+                    response = response.map((item, index) => {
+                        if (isBlank(item.id)) {
+                            item.id = index;
+                        }
 
-                    this.deleteProperties(item);
-                    return item;
-                });
-                return this._super(store, primaryModelClass, { [`echonest-${key}`]: items }, id, requestType);
+                        this.deleteProperties(item);
+                        return item;
+                    });
+                }
+                return this._super(store, primaryModelClass, { [`echonest-${key}`]: response }, id, requestType);
             } else if (isPresent(payload.response[key])) {
                 return this._super(store, primaryModelClass, { [`echonest-${key}`]: payload.response[key] }, id, requestType);
             }
