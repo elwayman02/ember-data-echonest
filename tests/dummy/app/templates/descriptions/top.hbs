@@ -1,0 +1,16 @@
+{{#if results.length}}
+  <table>
+    <tr>
+      <th>Rank</th>
+      <th>Description</th>
+      <th>Frequency</th>
+    </tr>
+      {{#each results as |description|}}
+        <tr>
+          <td>{{description.rank}}</td>
+          <td>{{description.name}}</td>
+          <td>{{description.frequency}}</td>
+        </tr>
+      {{/each}}
+  </table>
+{{/if}}

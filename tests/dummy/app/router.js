@@ -21,8 +21,9 @@ Router.map(function () {
         this.route('suggest');
     });
     this.route('descriptions', function () {
-        this.route('list');
         this.route('artist');
+        this.route('list');
+        this.route('top');
     });
     this.route('genres', function () {
         this.route('list');

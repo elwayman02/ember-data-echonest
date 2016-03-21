@@ -19,3 +19,5 @@ test('method', function (assert) {
 test('pathForType', function (assert) {
     assert.equal(adapter.pathForType('echonest-description'), 'artist', 'artist is returned from pathForType');
 });
+
+// TODO: Add tests for `buildURL`

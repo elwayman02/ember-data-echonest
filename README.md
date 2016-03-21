@@ -427,6 +427,7 @@ this.store.query('echonest-artist', {
     method: 'search',
     artist_start_year_before: 2000
 });
+```
 
 *results*: Number of desired results _(0-100, Default: 15)_
 *start*: Desired index of the first result returned _(0+, Default: 0)_
@@ -467,21 +468,6 @@ this.store.query('echonest-artist', {
 
 Descriptions of artists
 
-#### List
-
-[List Docs](http://developer.echonest.com/docs/v4/artist.html#list-terms)
-
-Returns a list of the best descriptive terms to use with search APIs. Allows two values for `type`:
-
-* `mood` - A mood or feeling associated with the music (ie 'aggressive', 'dreamy', or 'epic')
-* `style` - A genre or type of music (ie 'rock', 'classical', or '90s')
-
-```javascript
-this.store.query('echonest-description', {
-    type: 'style'
-});
-```
-
 #### Artist
 
 [Artist Description Docs](http://developer.echonest.com/docs/v4/artist.html#terms)
@@ -504,6 +490,47 @@ this.store.query('echonest-description', {
     method: 'artist',
     name: 'Taylor Swift',
     sort: 'weight'
+});
+```
+
+#### List
+
+[List Docs](http://developer.echonest.com/docs/v4/artist.html#list-terms)
+
+Returns a list of the best descriptive terms to use with search APIs. Allows two values for `type`:
+
+* `mood` - A mood or feeling associated with the music (ie 'aggressive', 'dreamy', or 'epic')
+* `style` - A genre or type of music (ie 'rock', 'classical', or '90s')
+
+```javascript
+this.store.query('echonest-description', {
+    type: 'style'
+});
+```
+
+#### Top
+
+[List Docs](http://developer.echonest.com/docs/v4/artist.html#top-terms)
+
+Returns a list of the most frequent descriptive terms to use with search APIs.
+
+```javascript
+this.store.query('echonest-description', {
+    method: 'top'
+});
+```
+
+##### Options
+
+* `results` - Number of desired results _(0-1000, Default: 15)_
+
+*Note: The docs list 0-100 as allowed ranges, but testing has 
+revealed up to 1000 results can be returned without error.*
+
+```javascript
+this.store.query('echonest-description', {
+    method: 'top',
+    results: 385
 });
 ```
 
