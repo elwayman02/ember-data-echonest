@@ -474,6 +474,20 @@ this.store.queryRecord('echonest-twitter', {
 });
 ```
 
+#### URLs
+
+Retrieve links to artist profiles and official sites. 
+Supports last.fm, MusicBrainz, Myspace, Twitter, and the artist's homepage.
+
+```javascript
+this.store.queryRecord('echonest-urls', {
+    name: 'Ed Sheeran'
+});
+```
+
+_Note: Docs claim Wikipedia urls are supported & Twitter is completely 
+undocumented for this API, but testing indicates otherwise._
+
 ### Description
 
 Descriptions of artists
@@ -534,8 +548,8 @@ this.store.query('echonest-description', {
 
 * `results` - Number of desired results _(0-1000, Default: 15)_
 
-*Note: The docs list 0-100 as allowed ranges, but testing has 
-revealed up to 1000 results can be returned without error.*
+_Note: The docs list 0-100 as allowed ranges, but testing has 
+revealed up to 1000 results can be returned without error._
 
 ```javascript
 this.store.query('echonest-description', {

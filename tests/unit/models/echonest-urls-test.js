@@ -1,6 +1,6 @@
 import { moduleForModel, test } from 'ember-qunit';
 
-moduleForModel('echonest-genre', 'Unit | Model | echonest genre', {
+moduleForModel('echonest-urls', 'Unit | Model | echonest urls', {
   // Specify the other units that are required for this test.
   needs: []
 });

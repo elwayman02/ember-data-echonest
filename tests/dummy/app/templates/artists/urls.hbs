@@ -1,0 +1,24 @@
+<div class="searchContainer">
+    {{input
+    enter='search'
+    placeholder='Lookup an Artist...'
+    value=keyword}}
+  <button {{action 'search' keyword}}>Search</button>
+</div>
+{{#if results}}
+    {{#if results.officialUrl}}
+      <p><a href="{{results.officialUrl}}" target="_blank">Official Site</a></p>
+    {{/if}}
+    {{#if results.twitterUrl}}
+      <p><a href="{{results.twitterUrl}}" target="_blank">Twitter</a></p>
+    {{/if}}
+    {{#if results.lastfmUrl}}
+    <p><a href="{{results.lastfmUrl}}" target="_blank">Last.fm</a></p>
+    {{/if}}
+    {{#if results.mbUrl}}
+    <p><a href="{{results.mbUrl}}" target="_blank">MusicBrainz</a></p>
+    {{/if}}
+    {{#if results.myspaceUrl}}
+    <p><a href="{{results.myspaceUrl}}" target="_blank">Myspace</a></p>
+    {{/if}}
+{{/if}}

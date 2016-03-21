@@ -30,16 +30,18 @@ export default RESTSerializer.extend({
         const payloadKey = this.payloadKey(key);
         if (isPresent(key) && isPresent(payload.response)) {
             let response = payload.response[payloadKey];
-            if (isPresent(response)) {
+            if (isPresent(response) || isArray(response)) {
                 if (isArray(response)) {
                     response = response.map((item, index) => {
                         if (isBlank(item.id)) {
-                            item.id = index;
+                            item.id = index; // Hack, replace with Model-fragments when it supports E-D >2.1
                         }
 
                         this.deleteProperties(item);
                         return item;
                     });
+                } else if (isBlank(response.id)) {
+                    response.id = id = Math.floor(Math.random() * (100000) + 1); // Mega hack, replace with Model-fragments
                 }
                 return this._super(store, primaryModelClass, { [`echonest-${key}`]: response }, id, requestType);
             } else if (isPresent(payload.response[key])) {

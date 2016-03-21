@@ -26,7 +26,7 @@ test('keyForAttribute', function (assert) {
 
 let store, modelClass, payload, response, key, item, items, id, type, foo, normalizeStub;
 
-function setupNormalizeTests(showResp, showItems) {
+function setupNormalizeTests(showResp, showItems, noId) {
     store = {};
     modelClass = 'model';
     id = 1234;
@@ -54,6 +54,10 @@ function setupNormalizeTests(showResp, showItems) {
         payload.response = response;
     }
 
+    if (noId) {
+        id = null;
+    }
+
     normalizeStub = this.stub(serializer, '_normalizeResponse', function () {
         return foo;
     });
@@ -63,11 +67,13 @@ function setupNormalizeTests(showResp, showItems) {
     return serializer.normalizeResponse(store, modelClass, payload, id, type);
 }
 
-function assertNormalizeArguments(assert, args) {
+function assertNormalizeArguments(assert, args, skipId) {
     assert.equal(args.length, 6, '6 arguments passed to _normalizeResponse'); // last argument is added within Ember-Data
     assert.equal(args[0], store, 'store passed to _super');
     assert.equal(args[1], modelClass, 'primaryModelClass passed to _super');
-    assert.equal(args[3], id, 'id passed to _super');
+    if (!skipId) {
+        assert.equal(args[3], id, 'id passed to _super');
+    }
     assert.equal(args[4], type, 'requestType passed to _super');
 }
 
@@ -110,12 +116,12 @@ test('normalizeResponse builds single response from payload key', function (asse
     this.stub(serializer, 'payloadKey', function () {
         return 'item'; // simulate a singular payload key that matches the model key
     });
-    const result = setupNormalizeTests.call(this, true, 1);
+    const result = setupNormalizeTests.call(this, true, 1, true);
 
     assert.ok(normalizeStub.calledOnce, '_normalizeResponse was called once');
 
     const { args } = normalizeStub.firstCall;
-    assertNormalizeArguments(assert, args);
+    assertNormalizeArguments(assert, args, true);
 
     const [,,itemPayload] = args;
     assert.equal(itemPayload[`echonest-${key}`], item, 'single item is returned');

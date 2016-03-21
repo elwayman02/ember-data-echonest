@@ -20,6 +20,7 @@ Router.map(function () {
         this.route('search');
         this.route('suggest');
         this.route('twitter');
+        this.route('urls');
     });
     this.route('descriptions', function () {
         this.route('artist');
