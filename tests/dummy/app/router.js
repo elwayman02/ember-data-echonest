@@ -19,6 +19,7 @@ Router.map(function () {
         this.route('news');
         this.route('reviews');
         this.route('search');
+        this.route('similar');
         this.route('suggest');
         this.route('twitter');
         this.route('urls');

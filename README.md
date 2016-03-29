@@ -457,6 +457,58 @@ this.store.query('echonest-artist', {
 });
 ```
 
+#### Search
+
+Returns a list of artists matching the provided `name` query
+
+```javascript
+this.store.query('echonest-artist', {
+    name: 'Taylor Swift',
+    method: 'similar'
+});
+```
+
+##### Options
+
+*max_familiarity*: The maximum familiarity for artists returned from the query _(0-1, Default: 1)_
+*min_familiarity*: The minimum familiarity for artists returned from the query _(0-1, Default: 0)_
+*max_hotttnesss*: The maximum hotttnesss for artists returned from the query _(0-1, Default: 1)_
+*min_hotttnesss*: The minimum hotttnesss for artists returned from the query _(0-1, Default: 0)_
+
+```javascript
+this.store.query('echonest-artist', {
+    name: 'Taylor Swift',
+    method: 'similar',
+    min_familiarity: .7
+});
+```
+
+*artist_start_year_before*: Limit to artists whose first active year is before the provided year
+*artist_start_year_after*: Limit to artists whose first active year is after the provided year
+*artist_end_year_before*: Limit to artists whose last active year is before the provided year
+*artist_end_year_after*: Limit to artists whose last active year is after the provided year
+
+```javascript
+this.store.query('echonest-artist', {
+    name: 'Taylor Swift',
+    method: 'similar',
+    artist_start_year_after: 2000
+});
+```
+
+*results*: Number of desired results _(0-100, Default: 15)_
+*min_results*: Minimum number of desired results _(0-100, Default: 15)_
+*start*: Desired index of the first result returned _(0+, Default: 0)_
+
+```javascript
+this.store.query('echonest-artist', {
+    name: 'Taylor',
+    method: 'search',
+    results: 75,
+    start: 10
+});
+```
+
 #### Suggest
 
 Suggest artist names based on a partial query
