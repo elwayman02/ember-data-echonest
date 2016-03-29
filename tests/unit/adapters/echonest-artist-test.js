@@ -15,3 +15,5 @@ moduleFor('adapter:echonest-artist', 'Unit | Adapter | echonest artist', {
 test('pathForType', function (assert) {
     assert.equal(adapter.pathForType('echonest-artist'), 'artist', 'artist is returned from pathForType');
 });
+
+//TODO: Add test for genre lookup (buildURL)
