@@ -13,6 +13,9 @@ This addon provides an abstraction layer for accessing the
 This project is intended to work with Ember-Data 2.x, so if you wish to use it with a previous version, please file an issue.
 If there is enough interest, we can work on handling older versions as well. Better yet, we'd love you to submit a PR adding this functionality!
 
+EDEN uses the [BabelJS polyfill](https://github.com/babel/ember-cli-babel#polyfill) for additional ES6 features (such as `includes`), 
+so please make sure you have enabled it in your app!  
+
 ## Obtaining an Echo Nest API Key
 
 In order to use this addon, you must register for an [Echo Nest API Key](http://developer.echonest.com/docs/v4/index.html#keys).
@@ -190,6 +193,19 @@ this.store.queryRecord('echonest-artist', {
     id: 'ARH6W4X1187B99274F'
 });
 ```
+
+#### Genre
+
+List the top artists for a given genre
+
+```javascript
+this.store.query('echonest-artist', {
+    method: 'genre',
+    name: 'Rock'
+});
+```
+
+*Note: The API docs indicate the artist buckets are supported; however, testing has shown this to throw a 500 error.*
 
 #### Hotttnesss
 

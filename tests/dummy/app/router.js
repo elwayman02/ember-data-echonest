@@ -10,6 +10,7 @@ Router.map(function () {
     this.route('artists', function() {
         this.route('biographies');
         this.route('blogs');
+        this.route('by-genre');
         this.route('extract');
         this.route('familiarity');
         this.route('hotttnesss');
