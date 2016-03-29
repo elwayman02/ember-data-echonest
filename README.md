@@ -457,7 +457,7 @@ this.store.query('echonest-artist', {
 });
 ```
 
-#### Search
+#### Similar
 
 Returns a list of artists matching the provided `name` query
 
@@ -529,6 +529,38 @@ this.store.query('echonest-artist', {
     method: 'suggest',
     name: 'Taylor',
     results: 75
+});
+```
+
+#### Top Hottt
+
+Returns a list of the top artists by `hotttness_rank`
+
+```javascript
+this.store.query('echonest-artist', {
+    method: 'top_hottt'
+});
+```
+
+##### Options
+
+*results*: Number of desired results _(0-1000, Default: 15)_
+*start*: Desired index of the first result returned _(0+, Default: 0)_
+
+```javascript
+this.store.query('echonest-artist', {
+    method: 'top_hottt',
+    results: 75,
+    start: 10
+});
+```
+
+*genre*: Filter results to artists from the selected genres
+
+```javascript
+this.store.query('echonest-artist', {
+    method: 'top_hottt',
+    genre: ['rock', 'pop']
 });
 ```
 
