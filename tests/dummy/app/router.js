@@ -21,6 +21,7 @@ Router.map(function () {
         this.route('search');
         this.route('similar');
         this.route('suggest');
+        this.route('top-hottt');
         this.route('twitter');
         this.route('urls');
     });
