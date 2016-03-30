@@ -588,6 +588,29 @@ this.store.queryRecord('echonest-urls', {
 _Note: Docs claim Wikipedia urls are supported & Twitter is completely 
 undocumented for this API, but testing indicates otherwise._
 
+#### Videos
+
+Returns a list of videos related to an artist
+
+```javascript
+this.store.query('echonest-video', {
+    name: 'Taylor Swift'
+});
+```
+
+##### Options
+
+*results*: Number of desired results _(0-100, Default: 15)_
+*start*: Desired index of the first result returned _(0+, Default: 0)_
+
+```javascript
+this.store.query('echonest-video', {
+    name: 'Taylor Swift',
+    results: 75,
+    start: 10
+});
+```
+
 ### Description
 
 Descriptions of artists

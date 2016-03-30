@@ -24,6 +24,7 @@ Router.map(function () {
         this.route('top-hottt');
         this.route('twitter');
         this.route('urls');
+        this.route('videos');
     });
     this.route('descriptions', function () {
         this.route('artist');
