@@ -21,7 +21,7 @@ export default Model.extend({
     songs: attr(), // echonest-songs
     teams: attr(),
     twitter: attr('string'),
-    urls: attr(),
-    video: attr(),
+    urls: attr(), // echonest-urls
+    video: attr(), // echonest-video
     yearsActive: attr()
 });
