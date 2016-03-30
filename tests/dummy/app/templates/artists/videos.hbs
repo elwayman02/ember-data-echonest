@@ -1,0 +1,29 @@
+<div class="searchContainer">
+    {{input
+    enter='search'
+    placeholder='Lookup an Artist...'
+    value=keyword}}
+  <button {{action 'search' keyword}}>Search</button>
+</div>
+{{#if results.length}}
+  <table>
+    <tr>
+      <th>Title</th>
+      <th>Site</th>
+      <th>Date Found</th>
+      <th></th>
+    </tr>
+      {{#each results as |video|}}
+        <tr>
+          <td class="articleTitle"><a href="{{video.url}}" target="_blank">{{video.title}}</a></td>
+          <td>{{video.site}}</td>
+          <td>{{video.dateFound}}</td>
+          <td>
+            <a href="{{video.url}}" target="_blank">
+              <img src="{{video.imageUrl}}" width="75" height="75"/>
+            </a>
+          </td>
+        </tr>
+      {{/each}}
+  </table>
+{{/if}}
