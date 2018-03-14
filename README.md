@@ -1,5 +1,9 @@
 # Ember-Data-Echonest
 
+## DEPRECATED
+
+The Echonest API no longer exists, so sadly this project will merely live as an archive.
+
 [![Build Status](https://travis-ci.org/elwayman02/ember-data-echonest.svg)](https://travis-ci.org/elwayman02/ember-data-echonest)
 [![Ember Observer Score](https://emberobserver.com/badges/ember-data-echonest.svg)](https://emberobserver.com/addons/ember-data-echonest)
 [![Dependency Status](https://www.versioneye.com/user/projects/55f4f6ab3ed89400170002ef/badge.svg?style=flat)](https://www.versioneye.com/user/projects/55f4f6ab3ed89400170002ef)
